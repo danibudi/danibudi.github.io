@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+
+ <head>
+  <meta charset="utf-8">
+
+  <title>Software Quality Engineering</title>
+
+  <meta name="description" content="Software Quality Engineering">
+  <meta name="author" content="Dani Budinova-Spahieva">
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+  <link rel="stylesheet" href="css/reveal.css">
+  <link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+  <!-- Code syntax highlighting -->
+  <link rel="stylesheet" href="lib/css/zenburn.css">
+
+  <!-- Printing and PDF exports -->
+  <script>
+   var link = document.createElement( 'link' );
+   link.rel = 'stylesheet';
+   link.type = 'text/css';
+   link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+   document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <style> 
+  .newspaper {
+   -webkit-column-count: 2; /* Chrome, Safari, Opera */
+   -moz-column-count: 2; /* Firefox */
+   column-count: 2;
+  }
+  .ex {color: #00ff00;}
+  .green_bold {color: #00ff00!important; font-weight: bold!important;}
+  .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
+ color: #00ff00;}
+ p {text-align:left!important;}
+ h6 {text-align:left!important; font-size:80%!important; color: yellow; background: #9fc97f; text-transform: none!important; padding:10px!important;}
+  </style>
+
+  <!--[if lt IE 9]>
+  <script src="lib/js/html5shiv.js"></script>
+  <![endif]-->
+ </head>
+ <body>
+  <div class="reveal">
+   <!-- Any section element inside of this container is displayed as a slide -->
+   <div class="slides">
+    <section>
+     <h1>Software Quality Engineering</h1>
+     <h3>Chapter 1 - Software Quality Fundamentals</h3>
+     <p>
+      <small>Created by <a href="mailto:ybspahieva@taxback.com">Dani Budinova-Spahieva</a></br>
+      <p style="text-align:left">
+      Press <strong>ESC</strong> to enter the slide overview.</br>
+      Use the <em>Space</em> key to navigate through all slides.</br>
+      Presentations look great on touch devices, like mobile phones and tablets. Simply swipe through your slides.
+      </p>
+      </small>
+     </p>
+    </section>
+    <section>
+     <h2>1.1 Software Engineering Culture and Ethics</h2>
+     <p>
+The culture of an organization is a critical success factor in its process improvement ef-
+forts. "Culture" includes a set of shared values and principles that guide the behaviors, activities,
+priorities, and decisions of a group of people working in the same area. When coworkers align
+along common beliefs, it is easier to induce changes that will increase the group's effectiveness
+and its probability of survival. A  shared  culture  is  one  difference  between  a  "team"  and  a  "bunch
+of bozos on a bus.</p>
+</section>
+<section>  
+<h3>Customer involvement is the most critical factor in software quality.</h3>
+<p>Any successful enterprise requires that you both do the right thing, and do the thing right. We ex-
+pect that professional software developers know how to do the "thing" right. Doing the right
+thing, though, requires an unambiguous understanding of what your customer expects. To this
+end, we strive to maximize participation of our customers in our development activities.
+</p>
+</section>
+<section>  
+<h3>Sharing the vision of the final product with the customer</h3>
+<p>
+The classic failure of software development is that the product delivered only vaguely matches the
+expectations  of  the  customer. Every  project,  even  small  ones  developing  internally reusable  software  components,  goes  through  a  formal,  written  requirements  specification  process
+If you don't have time to do it right, when will you have time to do it over?</p>
+</section>
+<section>  
+<h6>Quality is the top priority; long-term productivity is a natural consequence of high quality</h6>
+<h6> Ongoing education is every team member's responsibility.</h6>
+<h6> Have a peer, rather than a customer, find a defect.</h6>
+<h6> Written software development procedures can help improve quality.</h6>
+<h6> Continual improvement of your software development process is both possible and essential.</h6>
+<h6>Never let your boss or your customer talk you into doing a bad job.</h6>
+<h6>People need to feel that the work they do is noticed.</h6>
+</section>
+<section>  
+<h3>Summary</h3>
+<p>You can't buy a culture in shrink-wrap; you must roll your own. Every software
+team works in a different context of expectations, pressures, application domains, and technolo-
+gies. The process of agreeing upon principles and values provides many opportunities for im-
+proving both the work environment and the work results. A shared culture is essential to progress
+through the software process maturity sequence to the discipline of repeatable and measurable
+software development processes.</p>
+    </section>
+<!-- Example of nested vertical slides -->
+<section>
+<h3>Value and Cost of Quality (COQ)</h3>
+<p style="font-size:80%!important">Associated with providing poor quality products or services. Categories: </p>
+<ul style="font-size:80%!important">
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">internal failure costs</h6> associated with defects found before the customer receives the product or service</li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">external failure costs</h6> associated with defects found after the customer receives the product or service</li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">appraisal costs </h6>incurred to determine the degree of conformance to quality requirements </li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">prevention costs</h6> incurred to keep failure and appraisal costs to a minimum.</li>
+</ul>
+</section>
+<section>
+<h6 style="font-size:90%!important">Cost of quality</h6><p> is a methodology that allows an organization  to determine the extent to which its resources are used for activities that  prevent poor quality, that appraise the quality of the organization's 
+products  or services, and that result from internal and external failures. Having such  information allows an organization to determine the potential savings to be  gained by implementing process improvements. </p>
+</section>
+<section><p>Quality-related activities that incur costs may be divided  into:
+<ul >
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">prevention costs</h6> </li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">appraisal costs</h6> </li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">internal costs</h6> </li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">external costs</h6> </li>
+</section>
+<section>
+<h4 style="font-size:80%!important">Prevention costs</h4>
+<p style="font-size:80%!important">Incurred to prevent or avoid quality  problems. Associated with the design, implementation, 
+and  maintenance of the quality management system. Planned and incurred  before actual operation, and they could include:</p>
+<ul >
+      <li class="fragment" style="font-size:80%!important"><h6 style="font-size:90%!important">Product or service requirements</h6> establishment of specifications for incoming materials, processes, finished products, and services</li>
+      <li class="fragment" style="font-size:80%!important"><h6 style="font-size:90%!important">Quality planning</h6>creation of plans for quality, reliability, operations, production, and inspection</li>
+      <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:90%!important">Quality assurance</h6>  creation and maintenance of the quality system</li>
+      <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:90%!important">Training</h6> development, preparation, and maintenance of programs</li>
+</ul>
+</section>
+<section>  
+<h4 style="font-size:90%!important">Appraisal costs</h4>
+<p style="font-size:90%!important">Associated with measuring and monitoring activities related to quality. These costs are associated with the suppliers' and customers' evaluation of purchased materials, processes, products, and services to ensure that they conform to specifications. They could include:</p>
+<ul style="font-size:90%!important">
+      <li class="fragment" style="text-align:left"><h6>Verification</h6>checking of incoming material, process setup, and products against agreed specifications</li>
+      <li class="fragment" style="text-align:left"><h6>Quality audits</h6>confirmation that the quality system is functioning correctly</li>
+      <li class="fragment" style="text-align:left"> <h6>Supplier rating</h6>assessment and approval of suppliers of products and services</li>
+</ul>
+</section>
+<section>
+<h4>Internal failure costs</h4>
+<p>Incurred to remedy defects discovered before the product or service is delivered to the customer. These costs occur when the results of work fail to reach design quality standards and are detected before they are transferred to the customer. They could include:</p>
+<ul>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">Waste</h6>performance of unnecessary work or holding of stock as a result of errors, poor organization, or communication</h6></li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">Rework</h6></li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">Failure analysis</h6></li>
+</ul> 
+</section>
+<section>
+<h4>External failure costs</h4>
+<p>Incurred to remedy defects discovered by customers. These costs occur when products or services that fail to reach design quality standards are not detected until after transfer to the customer. They could include:</p>
+<ul>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">Repairs and servicing</h6></li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">Warranty claims</h6></li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">Complaints</h6>all work and costs associated with handling and servicing customers' complaints </li>
+</ul>
+</section>
+<section>
+<h4>Cost of quality and organizational objectives</h4>
+<p>The costs of doing a quality job, conducting quality improvements, and achieving goals must be carefully managed so that the long-term effect of quality on the organization is a desirable one. 
+The quality cost system, once established, should become dynamic and have a positive impact on the achievement of the organization's mission, goals, and objectives.</p>
+</section>
+ <section>
+      <h6>Models and Quality Characteristics</h6>
+      <p style="text-align:left" >The <a href="http://www.iso.org/iso/en/ISOOnline.frontpage">official ISO 9126 documentation</a> software quality model identifies 6 main quality characteristics, namely:</p>
+<ul>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">Functionality</h6>The software system is functioning, as specified,</li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">Reliability</h6>the capability of the system to maintain its service provision under defined conditions for defined periods of 
+      time. (fault tolerance - the ability of a system to withstand component failure)</li> 
+      </ul>
+      </section>
+      <section>
+      <h5>Models and Quality Characteristics - part 2</h5>
+      <ul style="font-size:80%!important">
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">Usability</h6> exists with regard to functionality and refers to the ease of use for a given function. learnability is also a major subcharacteristic of usability.</li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">Efficiency</h6>concerned with the system resources used when providing the required functionality.</li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">Maintainability</h6>ability to identify and fix a fault within a software component; testability, readability, modularization</li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:90%!important">Portability</h6>how well the software can adopt to changes in its environment or with its requirements</li>
+</ul> 
+</section>
+<section>
+<h6>Functionality</h6>
+<ul style="font-size:80%!important">
+      <li class="fragment" style="text-align:left"><h6 style="font-size:80%!important">Suitability</h6> appropriateness of the functions of the software.</li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:80%!important">Accurateness</h6> correctness of the functions</li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:80%!important">Interoperability</h6> the ability of a software component to interact with other components or systems.</li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:80%!important">Compliance</h6> Where appropriate certain industry (or government) laws and guidelines need to be complied with</li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:80%!important">Security</h6>unauthorized access to the software functions</li>
+</ul> 
+</section>
+<section>
+<h6>Reliability</h6>
+<ul style="font-size:80%!important">
+      <li class="fragment" style="text-align:left"><h6 style="font-size:80%!important">Maturity</h6> frequency of failure of the software.</li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:80%!important">Fault tolerance</h6> The ability of software to withstand (and recover) from component, or environmental, failure</li>
+      <li class="fragment" style="text-align:left"><h6 style="font-size:80%!important">Recoverability</h6> Ability to bring back a failed system to full operation, including data and network connections.</li>
+ </ul> 
+</section>
+<section>
+<h6>Usability</h6>
+	<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Understandability</h6> Determines the ease of which the systems functions can be understood</li>
+      <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Operability</h6>Ability of the software to be easily operated by a given user in a given environment.</li>
+      <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Learnability</h6>Learning effort for different users, i.e. novice, expert, casual etc.</li>
+</ul> 
+</section>
+<section>
+<h6>Efficiency</h6>
+	<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Time behavior</h6> Characterizes response times for a given thru put, i.e. transaction rate.</li>
+	<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Resource behavior</h6>Characterizes resources used, i.e. memory, cpu, disk and network usage.</li>
+</ul> 
+</section>
+<section>
+<h6>Maintainability</h6>
+	<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Analyzability</h6> Characterizes the ability to identify the root cause of a failure within the software</li>
+	<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Changeability</h6> Characterizes the amount of effort to change a system.</li>
+	<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Stability</h6> Characterizes the sensitivity to change of a given system that is the negative impact that may be caused by system changes.</li>
+	<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Testability</h6>Characterizes the effort needed to verify (test) a system change.</li>
+</ul> 
+</section>
+<section>
+<h6>Portability</h6>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Adaptability</h6> Characterizes the ability of the system to change to new specifications or operating environments.</li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Installability</h6> Characterizes the effort required to install the software</li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Conformance</h6> portability</li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Replaceability</h6> Characterizes the <i>plug and play</i> aspect of software components, that is how easy is it to exchange a given software component within a specified environment.</li>
+</ul>
+</section>
+<section>
+      <h2>Software Development Models </h2>
+      <p>Testing does not exist in isolation, test activities are related to software development activities. Different development  life cycle models need different approaches to testing. There are various Software development models or methodologies. 
+      <a>http://istqbexamcertification.com/what-are-the-software-development-models/ </a></p>
+      </section>
+<section><p>Software Development Models:</p>
+<ul>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Waterfall model</h6> </li>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">V model</h6> </li>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Incremental model</h6> </li>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">RAD model</h6> </li>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Agile model</h6> </li>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Iterative model</h6> </li>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Spiral model</h6> </li>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Prototype model</h6> </li>
+</ul> 
+</section>
+<section>
+      <h4>Software Quality Improvement</h4>
+      <p>Software underpins nearly every business process. Therefore it's essential to lower the cost of testing and improve the quality of your software. These four pointers will help you improve software quality and improve testing efficiency.</p>
+</section>
+<section><h6> Test at the right time</h6>
+<p>By testing earlier you will be able to detect and solve defects rather than having to resolve them at the end of the process. The later software bugs are detected, the longer and more expensive they are to resolve.
+Fixing bugs early can be a game-changer. The firm cut development time by 25 percent and bug fixing costs by 31 percent.
+Get testers involved during the requirements and design stage so they can help formulate a more effective test framework. More than 70 percent of software issues in a live environment can be traced back to poor requirements.
+Implement Static testing early in the life cycle to give immediate reactions on quality issues regarding your software development.
+</p></section>
+<section><h6>Improve testing organisation</h6>
+<p>Be professional in your testing or risk harming your business.
+Implement specific policies to direct a consistent approach like using repeatable industry standard testing processes and training testers within this framework.
+Remember: Use metrics. This helps keep track of where you are ensuring that you don't start before you're ready, and you finish when you're done to prevent wasted bandwidth.
+</p></section>
+<section><h6>Innovation leads to improvement<h6>
+<p>Write automated tests wherever possible to make your testing process more efficient. Make sure that your testing is targeted too. By using test design techniques and risk-based testing you can make sure that you will be using fewer, but more worthwhile tests.
+</p></section>
+<section><h6>Keep reviewing</h6><p>
+You can have too much of a good thing. Just because certain methods have worked in the past doesn't mean they always will. Processes of evaluation and refactoring allow your testing team to maximise efficiency by reviewing what worked well.
+Implement a Root cause analysis process which distinguishes whether issues were a 'testing miss', a 'development miss' or a 'requirements or design miss'. This will help to identify areas for improvement throughout the whole software development process.</h6> 	
+  </p>
+  </section>
+    <section>
+     <h2>Software system safety</h2>
+     <p align="left">
+     In software engineering, software system safety optimizes system safety in the design, development, use, and maintenance of software systems and their integration with safety-critical hardware systems in an operational environment.
+      There are three major types of software failure. Not all of these can be rectified by the programmers. The three types are:</p>
+<ul>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Software logic errors,</h6> </li>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Software support errors,</h6> </li>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Hardware failures </h6> </li>
+</ul> 
+</section>
+<section>
+     <h2>Techniques</h2>
+     <ul>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">During preliminary design</h6> </li>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">During Analysis/Requirements</h6> </li>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">During the Software Design phase</h6> </li>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">During the late design and coding phase</h6> </li>
+   <li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important"> Software verification and testing</h6> </li>
+</ul> 
+</section>
+
+ <section  style="text-align:left; font-size:80%!important">
+ <h3> References </h3>
+ <p><a href="http://www.fmeainfocentre.com/handbooks/2005-01-0785.pdf">http://www.fmeainfocentre.com/handbooks/2005-01-0785.pdf </a> - Main source for techniques</p> <p>
+
+<a href="http://www.dcs.gla.ac.uk/~johnson/teaching/safety/reports/Clif_Ericson1.htm">http://www.dcs.gla.ac.uk/~johnson/teaching/safety/reports/Clif_Ericson1.htm</a> </p><p>
+
+<a href="http://www.msha.gov/TECHSUPP/ACC/sysafety/softsafe32.pdf">http://www.msha.gov/TECHSUPP/ACC/sysafety/softsafe32.pdf</a> </p><p>
+
+<a href="http://satc.gsfc.nasa.gov/assure/distasst.pdf">http://satc.gsfc.nasa.gov/assure/distasst.pdf</a>  </p><p>
+
+<a href="http://www.embedded.com/columns/technicalinsights/19201765?_requestid=471140">http://www.embedded.com/columns/technicalinsights/19201765?_requestid=471140 </a> </p><p>
+
+<a href="http://en.wikipedia.org/wiki/Failure_mode_and_effects_analysis">http://en.wikipedia.org/wiki/Failure_mode_and_effects_analysis</a> </p><p>
+
+<a href="http://www.weibull.com/basics/fault-tree/">http://www.weibull.com/basics/fault-tree/</a> </p><p>
+
+<a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=00816294">Goddard, Peter. Software FMEA Techniques, 2000</a> </p>
+
+
+    </section>
+   </div>
+  </div>
+
+  <script src="lib/js/head.min.js"></script>
+  <script src="js/reveal.js"></script>
+
+  <script>
+
+   // Full list of configuration options available at:
+   // https://github.com/hakimel/reveal.js#configuration
+   Reveal.initialize({
+    controls: true,
+    progress: true,
+    history: true,
+    center: true,
+
+    transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+    // Optional reveal.js plugins
+    dependencies: [
+     { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+     { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+     { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+     { src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+     { src: 'plugin/zoom-js/zoom.js', async: true },
+     { src: 'plugin/notes/notes.js', async: true }
+    ]
+   });
+
+  </script>
+
+ </body>
+</html>
