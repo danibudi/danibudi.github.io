@@ -298,6 +298,213 @@ Implement a Root cause analysis process which distinguishes whether issues were 
 </ul> 
 </section>
 
+<section>
+     <h2>Chapter 2 - Software Quality Management Processes</h2>
+     <ul>
+   <li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.1 Software Quality Assurance</h6> </li>
+   <li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.2 Verification & Validation </h6> </li>
+   <li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important"> 2.3.Reviews and Audits</h6> </li>
+   <li class="fragment" style="color:blue"><h6 style="font-size:60%!important; color:blue"> 2.3.1 Management Reviews</h6> </li>
+   <li class="fragment" style="color:blue"><h6 style="font-size:60%!important; color:blue"> 2.3.2 Technical Reviews</h6> </li>
+   <li class="fragment" style="color:blue"><h6 style="font-size:60%!important; color:blue"> 2.3.3 Inspections</h6> </li>
+   <li class="fragment" style="color:blue"><h6 style="font-size:60%!important; color:blue"> 2.3.4 Walkthroughs</h6> </li>
+   <li class="fragment" style="color:blue"><h6 style="font-size:60%!important; color:blue"> 2.3.5 Process Assurance and Product Assurance Audits</h6> </li>
+</ul> 
+</section>
+ <section>
+ <h3>2.1 Software Quality Assurance </h3>
+ <p> This chapter describes ways to organize test teams, which qualifications are important, the tasks of a test manager, and which supporting processes must be present for efficient testing. </p>
+</section>
+ <section>
+ <h4> 2.1.1 Test Organization</h4> 
+<li class="fragment" style="text-align:left; font-size:80%!important"><h3 style="font-size:80%!important">Test Teams - independent testing</h3> </li>
+<p class="fragment" style="color:blue">pro:</p>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">a) Independent testers are unbiased and thus find additional and different of independent testing defects than developers find.</h3> </li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">b) An independent tester can verify (implicit) assumptions made by developers during specification and implementation of the system.</h3> </li>
+<p class="fragment" style="color:red">cons:</p>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Too much isolation may impair the necessary communication between independent testing testers and developers.</h3> </li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Independent testing may become a bottleneck if there is a lack of necessary resources.</h3> </li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Developers may lose a sense of responsibility for quality because they may think, "the testers will find the problems anyway."</h3> </li>
+ </section> 
+ <section>
+ <h4> Models of independent testing</h4> 
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">The development team is responsible for testing, but developers test each other's programs</h6> </li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">There are testers within the development team; these testers do all the test work for their team.</h6> </li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">One or more dedicated testing teams exist within the project team</h6></li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Independent test specialists are used for specific testing tasks (such as performance test, usability test, security test)</h6> </li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">A separate organization (testing department, external testing facility, test laboratory) takes over the testing</h6> </li>
+ </section>
+ <section>
+ <h4>Hint</h4> 
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Project or test management should set testing standards and rules, and require test logs from the developers.</h6> </li> 
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">To provide support for applying systematic testing methods, testing specialists should, at least temporarily, be called in as coaches.</h6> </li>
+ </section>
+ <section>
+<h4> 2.1.2 Tasks and Qualifications</h4> 
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Test manager (test leader)</h6> </li> 
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Test designer (test analyst)</h6> </li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Test automator</h6> </li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Test administrator</h6> </li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Tester</h6> </li>
+ </section>
+<section>
+<h4>2.2 Test Planning</h4> 
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Quality Assurance Plan</h6> </li> 
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Test designer (test analyst)</h6> </li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Test automator</h6> </li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Test administrator</h6> </li>
+<li class="fragment" style="text-align:left; font-size:80%!important"><h6 style="font-size:80%!important">Tester</h6> </li>
+ </section>
+ <section>
+<h4>2.2.1 Quality Assurance Plan - IEEE 730-2002</h4> 
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">1. Purpose</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.Reference documents</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">3.Management</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">4.Documentation</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">5.Standards, practices, conventions, and metrics</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">6.Software reviews</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">7.Test</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">8.Problem reporting and corrective action</h6> </li>
+ </section>
+ <section>
+<h4>2.2.1 Quality Assurance Plan - IEEE 730-2002 part 2</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">9.Tools, techniques, and methodologies</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">10.Media control</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">11.Supplier control</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">12.Records collection, maintenance, and retention</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">13.Training</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">14.Risk management</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">15.Glossary</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">16.SQA Plan Change Procedure and History</h6> </li>
+ </section>
+ <section>
+<h4>2.2.2 Test Plan</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Defining the overall approach to and strategy for testing</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Deciding about the test environment and test automation</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Defining the test levels and their interaction, and integrating the testing activities with other project activities</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Deciding how to evaluate the test results</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Selecting metrics for monitoring and controlling test work, exit criteria</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Determining how much test documentation shall be prepared and determining templates</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Writing the test plan and deciding on what, who, when, and how much testing</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Estimating test effort and test costs</h6> </li>
+ </section>
+ <section>
+<h4>Test Plan according to IEEE 829-1998</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">1.Test plan identifier</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.Introduction</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">3.Test items</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">4.Features to be tested</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">5.Features not to be tested</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">6.Approach</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">7.Item pass/fail criteria (test exit criteria)</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">8.Suspension criteria and resumption requirements</h6> </li>
+ </section>
+ <section>
+<h4>Test Plan according to IEEE 829-1998 part 2</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">9.Test deliverables</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">10.Testing tasks</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">11.Environmental needs</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">12.Responsibilities</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">13.Staffing and training needs</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">14.Schedule</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">15.Risk and contingencies</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">16.Approvals</h6> </li>
+ </section>
+ <section>
+<h4>2.2.3 Prioritizing Tests</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">The usage frequency of a function or the probability of failure in software use.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Failure risk.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">The visibility of a failure for the end user</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Priority of the requirements.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Verifying conformance to required quality characteristics - high priority.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">System architecture</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Complexity</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Project risk</h6> </li>
+ </section>
+<section>
+<h4>2.2.4 Test Entry and Exit Criteria /when testing can be started and stopped/</h4>
+<p class="fragment" style="color:blue">preconditions for starting test execution</p>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">The test environment is ready.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">The test tools are ready for use in the test environment.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Test objects are installed in the test environment.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">The necessary test data is available.</h6> </li>
+ </section>
+<section>
+<h4>2.2.4 Test Entry and Exit Criteria /Test manager/</h4>
+<p class="fragment" style="color:blue">stop test execution</p>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Achieved test coverage: Tests run, covered requirements, code coverage, etc.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Product quality: Defect density, defect severity, failure rate, and reliability of the test object</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Residual risk: Tests not executed, defects not repaired, incomplete coverage of requirements or code, etc.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Economic constraints: Allowed cost, project risks, release deadlines, and market chances</h6> </li>
+ </section>
+<section>
+<h4>2.3 Cost and Economy Aspects</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.3.1 Costs of Defects</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.3.2 Cost of Testing</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.3.3 Test Effort Estimation</h6> </li>
+ </section>
+ <section>
+<h4>2.4 Choosing the Test Strategy and Test Approach</h4>
+<p class="fragment" style="color:blue">A test strategy or approach defines the project's testing objectives and the means to achieve them. It therefore determines testing effort and costs.</p>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.4.1 Preventative /testers are involved from the beginning/ vs. Reactive Approach /testers are involved (too) late/</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.4.2 Analytical vs. Heuristic Approach</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.4.3 Testing and Risk - <a style="color:red">Risk = damage * probability</a></h6> </li>
+ </section>
+ <section>
+<h4>2.5 Managing The Test Work</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.5.1 Test Cycle Planning - State of developmen, test results, resources</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.5.2 Test Cycle Monitoring /Test status report/</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.5.3 Test Cycle Control <a style="color:red">React on deviations from the plan</a></h6> </li>
+ </section>
+ <section>
+<h4>2.6 Incident Management</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.6.1 Test Log /Documenting incidents/</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.6.2 Incident Reporting /Document all information relevant to reproduction and correction/</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.6.3 Defect Classification <a style="color:red">React on deviations from the plan</a></h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">2.6.4 Incident Status <a style="color:red">React on deviations from the plan</a></h6> </li>
+ </section>
+ <section>
+<h4>2.6.2 Incident Report template</h4>
+<img data-src="incidentreport.png" alt = "incidentreport">
+ </section>
+ <section>
+<h4>2.6.3 Defect Classification</h4>
+<a style="color:red">severity - how far product use is impaired.</a>
+<img data-src="DefectClassification.png" alt = "DefectClassification">
+</section> <section>
+<h4>2.6.3 Defect Classification</h4>
+<a style="color:red">priority - how quickly a fault should be corrected</a>
+<img data-src="priority.png" alt = "priority">
+</section>
+ <section>
+<h4>Incident Report template</h4>
+<img data-src="incidentreport.png" alt = "incidentreport">
+ </section>
+ <section>
+<h4>2.6.4 Incident status</h4>
+<img data-src="status.png" alt = "status">
+ </section>
+ <section>
+<h6>2.6.4 Incident status - change control board, usually consists of representatives from the following stakeholders: product management, project
+management, test management, and the customer.</h6>
+<img data-src="status_model.png" alt = "status model">
+ </section>
+<section>
+<h4>2.7 Requirements to Configuration Management</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Version management</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Configuration identification</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Incident and change status control</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Configuration audits</h6> </li>
+ </section>
+<section>
+<h4>2.8 Relevant Standards</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Company standards</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Best practices</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Quality management standards [ISO 9000]</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Standards for particular industrial sectors</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:80%!important">Software testing standards - [BS 7925-2], [IEEE 829], [IEEE 1028], [ISO 29119]</h6> </li>
+ </section>
+
  <section  style="text-align:left; font-size:80%!important">
  <h3> References </h3>
  <p><a href="http://www.fmeainfocentre.com/handbooks/2005-01-0785.pdf">http://www.fmeainfocentre.com/handbooks/2005-01-0785.pdf </a> - Main source for techniques</p> <p>
@@ -315,6 +522,7 @@ Implement a Root cause analysis process which distinguishes whether issues were 
 <a href="http://www.weibull.com/basics/fault-tree/">http://www.weibull.com/basics/fault-tree/</a> </p><p>
 
 <a href="http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=00816294">Goddard, Peter. Software FMEA Techniques, 2000</a> </p>
+<a>Spillner, Linz, Schaefer. Software Testing Foundations, 2012</a> </p>
 
 
     </section>
