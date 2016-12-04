@@ -678,13 +678,212 @@ Now you are designing one of the features and you've found some problems with th
 <h4>Defect Characterization</h4>
 <li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Fault: A defect in source code. An "incorrect step, process, or data definition in computer
 program." The encoding of a human error in source code. Fault is the formal name of a bug.</h6> </li>
-<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Failure: An "event in which a system or system component does not perform a required
-function within specified limits."</h6> </li>
-<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Defect: An "imperfection or deficiency in a work product where that work product does
-not meet its requirements or specifications and needs to be either repaired or replaced." A defect is caused by a person committing an error</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Failure: Deviation of the component or system from its expected delivery, service or result</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Defect:
+Synonyms: bug, fault, problem; 
+A flaw in a component or system that can cause the component or system to fail to perform its required function, e.g., an incorrect statement or data definition. A defect, if encountered during execution, may cause a failure of the component or system.</h6> </li>
 <li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Error: "A human action that produces an incorrect result." A slip or mistake that a person
 makes. Also called human error.</h6> 
 </li><li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Computational Error: "the difference between a computed, observed, or measured value or condition and the true, specified, or theoretically correct value or condition."</h6> </li>
+ </section>
+ <section>
+<h4>3.3 Software Quality Management Techniques</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">3.3.1 Static Techniques</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">3.3.2 Dynamic Techniques</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">3.3.3 Testing</h6> </li> 
+ </section> 
+ <section>
+<h4>3.3.1 Static Techniques</h4>
+<p>An often-underestimated examination method is the so-called <b style="color:green">static test /static analysis/</b>. Opposite to dynamic testing (see chapter 3.3.2),
+the test object is not provided with test data and executed but rather analyzed. This can be done using one or more persons for an intensive investigation or through the use of tools. Such an investigation can be used for
+all documents relevant for software development and maintenance. 
+The goal of examination is to <b style="color:green">find defects and deviations</b> from the
+existing specifications, standards to comply with, or even the project plan.
+ </section>
+ <section>
+<h4>3.3.1 Static Techniques - part 2</h4>
+An additional benefit is <b style="color:green">optimizing the
+development process</b>. The basic idea is <b style="color:green">defect prevention</b>: defects and
+deviations should be recognized as early as possible before they have any
+effect in the further development process where they would result in
+expensive rework.</p>
+ </section> 
+<section>
+<h4>3.3.1.1 Structured Group Evaluations</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Foundations - Systematic use of the human ability to think and analyze</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Reviews - assure the quality of the examined documents /peer review, inspection/.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">The General Process - six work steps: planning, kick-off, individual preparation, review meeting, rework, and follow-up.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Roles and Responsibilities - Manager, Moderator, Author, Reviewer, Recorder</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Types of Reviews - products and management</h6> </li>
+ </section>
+ <section>
+<h6>Types of Reviews</h6>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Walkthrough - informal review: mutual learning, development of an understanding of the review object, and error detection.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Inspection - formal review, protocol.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Technical Review - Does the review object fulfill its purpose?</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Informal Review - author initiates; Pair programming, buddy testing, code swapping</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Selection Criteria - depends on organization</h6> </li>
+ </section> 
+ <section>
+<h6>3.3.1.2 Static Analysis - Analysis without executing the program, Formal documents</h6>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Formal documents - the technical requirements, the software architecture, or the software design. Example: modeling of class diagrams in UML; Generated outputs in HTML or XML</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Developers typically use static analysis tools before or during component or integration testing to check if guidelines or programming conventions are adhered to. During integration testing, adherence to interface guidelines is analyzed.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">If a static analysis is performed before the review, a number of defects and deviations can be found and the number of the aspects to be checked in the review clearly decreases. Due to the fact that static analysis is tool supported, there is much less effort involved than in a review.</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">The compiler is an analysis tool</h6> </li>
+</section> 
+<section><h6>The following defects and dangerous constructions can be detected by static analysis:</h6>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Syntax violations</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Deviations from conventions and standards</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Control flow anomalies</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Data flow anomalies - Defined, Referenced, Undefined variable</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Finding security problems</h6> </li>
+ </section>
+ <section>
+<h6>Execution of Control Flow Analysis</h6>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Control flow graph - Control flow anomalies /These anomalies could be jumps out of a loop body or a program structure
+that has several exits. The graph is not generated manually but that it is generated by a tool that guarantees an exact mapping of the program text to the graph./ Predecessor-successor
+table (so-called dead code)</li>
+ </section>
+ <section>
+<h6>Determining Metrics - Measuring of quality characteristics</h6>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Cyclomatic number (McCabe number) - measures the structural complexity of program code. The basis of
+this calculation is the control flow graph.</li>
+<p>For a control flow graph (G) of a program or a program part, the cyclomatic number can be computed like this: </p>
+<p><b style="color:green">v(G) = e - n + 2</b></p>
+<p>v(G) = cyclomatic number of the graph G</p>
+<p>e= number of edges of the control flow graph</p>
+<p>n= number of nodes of the control flow graph</p>
+ </section>
+ <section>
+<h6>Determining Metrics - cyclomatic number</h6>
+<img data-src="cyclomatic.png" alt = "cyclomatic">
+<p>The value of 6 is, according to McCabe, acceptable and in the middle of the range.
+He assumes that a value higher than 10 cannot be tolerated and rework of the
+program code has to take place.</p>
+</section>
+<section>
+<p>The cyclomatic number gives information about the testing effort. The higher the value of the cyclomatic number, the more difficult it is to understand the flow in a certain program part.</p>
+<p>Generally, static analyses should be performed first, before a document is subjected to review. Static analyses provide a relatively inexpensive.</p>
+ </section>
+ <section>
+<h6>3.3.1.3 Dinamic Analysis - testing software by executing the test objects on a computer.</h6>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">black box testing </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">white box testing</li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">experience-based testing </li>
+</section>  
+<section>
+<p>The test object (program) is fed with input data and executed. The program must be executable. In the lower test stages (unit and integration testing), the test object cannot be run alone but must be embedded into a test harness or test bed to obtain an executable program</p>
+<p>The test object will usually call different parts of the program through predefined interfaces. These parts of the program are represented by placeholders called stubs when they are not yet implemented and therefore aren't ready to be used or if they should be simulated for this particular test of the test object. Stubs simulate the input/output behavior of the part of the program that usually would be called by the test object.</p>
+</section> 
+<section> <p><b style="color:green">Test bed</b> Point of Observation (PoO) and Point of Control (PoC)</p>
+<img data-src="testbed.png" alt = "testbed">
+</section>
+<section> <p><b style="color:green">PoC and PoO at black box and white box techniques</b> </p>
+<img data-src="bbwb.png" alt = "black box and white box techniques">
+</section> 
+<section> <p><b style="color:green">White box </b>testing is also called structural testing because it considers the structure (component hierarchy, control flow, data flow) of the test object.
+The <b style="color:green">black box </b>testing techniques are also called functional, specification-based, or behavioral testing techniques because the observation of the input/output behavior is the main focus. The functionality of the test object is the center of attention.</p>
+</section> 
+<section> <p><b style="color:green">Black box </b></p>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Equivalence Class Partitioning</h6></li>
+<p>Example for the calculation of the dealer discount - description of the requirements: 'For a sales price of less than $15,000, no discount shall be given.
+For a price up to $20,000, a 5% discount is given. Below $25,000, the discount is 7%, and from
+ $25,000 onward, the discount is 8.5%.'
+Four different equivalence classes with correct input values (called valid equivalence classes, or vEC) can easily be derived for calculating the discount.</p>
+</section> 
+<section> <p><b style="color:green">Boundary Value Analysis </b></p>
+<p>Boundary value analysis checks the borders of the equivalence classes. On every border, the exact boundary value and both nearest adjacent values (inside and outside the equivalence class) are tested. The minimal possible increment in both directions should be used. For floating-point data, this can be the defined tolerance. Therefore, three test cases result from every boundary. If the upper boundary of one equivalence class equals the lower boundary of the adjacent equivalence class, then the respective test cases coincide as well.</p>
+</section> 
+<section> <p><b style="color:green">Boundary Value Analysis </b></p>
+<img data-src="boundary.jpg" alt = "boundary">
+</section> 
+<section>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Equivalence Class Partitioning</h6></li>
+<img data-src="vec.png" alt = "vec">
+<p>Invalid equivalence classes and representatives also needed.</p>
+</section>
+<section> <p><b style="color:green">State Transition Testing </b></p>
+<p>In state transition testing, the test object can be a complete system with different system states as well as a class in an object-oriented system with different states. Whenever the input history leads to differing behavior, a state transition test must be applied.</p>
+<p>Every state has been reached at least once.</p>
+<p>Every transition has been executed at least once.</p>
+<p>Every transition violating the specification has been checked.</p>
+</section> 
+ <section>
+ <p><b style="color:green">Logic-Based Techniques (Cause-Effect Graphing and Decision Table Technique, Pairwise Testing) </b></p>
+<p>The logical relationships between the causes and their effects in a component or a system are displayed in a so-called cause-effect graph.</p>
+<p>Every cause is described as a condition that consists of input values (or combinations thereof). The conditions are connected with logical operators (e.g., AND, OR, NOT). The condition, and thus its cause, can be True or False</p>
+<p>Effects are treated similarly and described in the graph.</p>
+ </section> 
+ <section>
+ <p>Cause-Effect Graph for an ATM</p>
+ <img data-src="cause_effect_graph.png" alt = "cause_effect_graph">
+ </section>
+ <section>
+ <p>Decision table</p>
+ <img data-src="Decision_table.png" alt = "Decision table">
+ </section> <section>
+ <p>Use-Case-Based Testing - Unified Modeling Language (UML) and diagrams</p>
+ <img data-src="Use_cases.png" alt = "Use_cases">
+ </section>
+ <section>
+<h4>General Discussion of the Black Box Technique</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Wrong specification is not detected</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Functionality that's not required is not detected</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Verification of the functionality</h6> </li>
+ </section>
+ <section>
+<h4>White Box Testing Techniques</h4>
+<p>Code-based testing techniques<p>
+<p>All code should be executed</p> 
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Statement testing <br> Statement coverage =
+(number of executed statements / total number of statements) x 100%</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Decision testing or branch testing: Branch coverage requires the test of every decision outcome: both THEN and ELSE in the IF statement; all possibilities for the CASE statement and the fall-through case; for loops, both execution of the loop body, bypassing the loop body and returning to the start of the loop. <br>Branch coverage=(number of executed branches / total number of branches) x 100%</h6></li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Testing of conditions</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Path testing</h6> </li>
+ </section>
+ <section>
+<h4>General Discussion of the White Box Technique</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Determine the test intensity</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Useful for lower test levels</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Coverage is desirable even at higher test levels</h6> </li>
+ <li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">“Missing source code” is not considered</h6> </li>
+ </section>
+ <section>
+<h4>Intuitive and Experience-Based Test Case Determination</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Intuitive skill and experience of the testers - error guessing</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Exploratory testing - test basis are are of low quality, obsolete, or do not exist at all</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">Coverage is desirable even at higher test levels</h6> </li>
+ <li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">“Missing source code” is not considered</h6> </li>
+ </section> 
+ <section>
+<h4>3.4 Software Quality Measurement</h4>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">descriptive statistics based (e.g., Pareto analysis, run charts, scatter plots, normal distribution)</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">statistical tests (e.g., the binomial test, chi-squared test)</h6> </li>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">trend analysis (e.g., control charts; see The Quality Toolbox in the list of further readings)</h6> </li>
+ <li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">prediction (e.g., reliability models).</h6> </li>
+ </section>
+ <section>
+<h4>Pareto analysis</h4>
+<p>formal technique useful where many possible courses of action are competing for attention. In essence, the problem-solver estimates the benefit delivered by each action, then selects a number of the most effective actions that deliver a total benefit reasonably close to the maximal possible one </p>
+<li class="fragment" style="text-align:left;"><h6 style="font-size:70%!important">80% of problems can be attributed to 20% of causes.</h6> </li>
+ </section>
+ <section>
+<h4>Run chart</h4>
+<p>A run chart is a graph of data, in chronological order, that displays changes and trends in the central tendency (average). Run charts can track events such as:<br>
+· Total failures<br>
+· Complaint levels<br>
+· End user satisfaction level<br>
+· Suggestion levels<br>
+· Training efforts<br>
+· Production yields<br>
+· Number of invoices<br>
+· Number of system errors<br>
+· Down time (minutes, percent) </p>
+ </section>
+  <section>
+<h4>Scatter Diagram /scatter plot, X-Y graph/</h4>
+<p>Scatter chart is commonly used to graph paired data such as scientific, statistical and engineering data. It has two value axes, showing one set of numerical data along the X-axis and another along the Y-axis. As the cursor moves, the X-axis and Y-axis value change real-time and automatically. Thus, users can gain higher precision in drawing. 
+
  </section>
  <section  style="text-align:left; font-size:80%!important">
  <h3> References </h3>
