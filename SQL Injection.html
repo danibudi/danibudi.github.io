@@ -1,0 +1,31 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ <title>SQL Injection</title>
+</head>
+<body>
+ <h2>SQL Injection- How it works</h2>
+
+ <p>The value of "title" parameter in query string is "' OR 'a'='a" <br><br>
+ <code>
+ Code:<br>
+ qry = "SELECT * FROM books_book WHERE title='%s'" % (title)<br>
+ book = Book.objects.raw(qry)<br><br>
+ </code>
+Generated query by django is: <br>
+<strong>SELECT * FROM books_book WHERE title='' OR 'a'='a'</strong><br>
+And it is displaying all books 
+</p>
+<hr>
+<b>Book</b>
+<ol>
+ 
+  <li>hogfather</li>
+ 
+  <li>color of magic</li>
+ 
+ </ol>
+ <p><a href="http://127.0.0.1:8000/good_example?title=%27%20OR%20%27a%27=%27a">Click here to see how to avoid SQL Injection in Django</a></p>
+ <p><a href="SQL Injection-good.html">Click here to see how to avoid SQL Injection in HTML file</a></p>
+
+
+</body></html>
