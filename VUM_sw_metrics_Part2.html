@@ -1,0 +1,2446 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.2.2.2 (Linux)"/>
+	<meta name="author" content="Dani "/>
+	<meta name="created" content="2017-03-04T18:36:30.470905840"/>
+	<meta name="changedby" content="Dani "/>
+	<meta name="changed" content="2017-03-05T18:43:04.534995009"/>
+	<style type="text/css">
+		h1 { direction: inherit }
+		h2 { direction: inherit }
+		h2.cjk { font-family: "Noto Sans CJK SC Regular" }
+		h2.ctl { font-family: "FreeSans" }
+	</style>
+</head>
+<body lang="en-US" dir="ltr">
+<h1 style="font-style: normal">Software Quality Metrics</h1>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Here,
+the goals of software measurement are to answer, among others, the
+following questions:</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal">• <font face="serif"><font size="4" style="font-size: 15pt">Is
+it possible to predict the error-proneness of a system using software
+measures from its design phase.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal">• <font face="serif"><font size="4" style="font-size: 15pt">Is
+it possible to extract quantitative features from the representation
+of a software design to enable us to predict the degree of
+maintainability of a software system.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal">• <font face="serif"><font size="4" style="font-size: 15pt">Are
+there any quantifiable, key features of the program code of a module
+that would enable us to predict the degree of difficulty of testing
+for that module, and the number of residual errors in the module
+after </font></font><font face="serif"><font size="4" style="font-size: 14pt">a
+</font></font><font face="serif"><font size="4" style="font-size: 15pt">particular
+level of testing has occurred.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal">• <font face="serif"><font size="4" style="font-size: 15pt">Is
+it possible to extract quantifiable features from the representation
+of a software design to enable us to predict the amount of effort
+required to build the software described by that design.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal">• <font face="serif"><font size="4" style="font-size: 15pt">Are
+there quantifiable features that can be extracted from the program
+code of a subroutine that can be used to help predict the amount of
+effort required to test the subroutine.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal">• <font face="serif"><font size="4" style="font-size: 15pt">Are
+there features in order to predict the size of a project from the
+specification phase.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal">• <font face="serif"><font size="4" style="font-size: 15pt">What
+properties of software measures are required in order to determine
+the quality of a design.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal">• <font face="serif"><font size="4" style="font-size: 15pt">What
+are the right software measures to underlie the software quality
+attributes of the ISO 9126 norm by numbers</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><br/>
+
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+major question for people who want to use software measures or using
+software measures is: what are the benefits of software measurement
+for practitioners. Software measures re used to <b>measure </b><b>s</b><b>pecific
+attributes</b> of a software product or software development process</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">We
+use software measures to derive: </font></font>
+</p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">A
+	basis for estimates,</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">To
+	track project progress,</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">To
+	determine (relative) complexity, </font></font>
+	</p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">To
+	help us to understand when we have archived a desired state of
+	quality, </font></font>
+	</p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">To
+	analyze or defects, </font></font>
+	</p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">and
+	to experimentally validate best practices.</font></font></p>
+</ul>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">In
+short: they help us to make better decisions.</font></font></p>
+<h1 style="font-style: normal">2. Definitions</h1>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">For
+the purposes of this standard, the following terms and definitions
+apply. IEEE Std 100-1996 and IEEE Std 610.12-1990 should be
+referenced for terms not defined in this clause.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.1
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>attribute</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A measurable physical or abstract property of an entity.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.2
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>critical
+range</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+Metric values used to classify software into the categories of
+acceptable, marginal, or unacceptable.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.3
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>critical
+value</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+Metric value of a validated metric that is used to identify software
+that has unacceptable quality.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.4
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>direct
+metric</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A metric that does not depend upon a measure of any other attribute.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.5
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>direct
+metric value</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A numerical target for a quality factor to be met in the final
+product. For example, mean time to failure (MTTF) is a direct metric
+of final system reliability.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.6
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>measure</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+(A) A way to ascertain or appraise value by comparing it to a norm.
+(B) To apply a metric.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.7
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>measurement</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+The act or process of assigning a number or category to an entity to
+describe an attribute of that entity. A figure, extent, or amount
+obtained by measuring.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.8
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>metric</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+See: software quality metric.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">NOTE
+The term metric is used in place of the term software quality metric.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.9
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>metrics
+framework</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A decision aid used for organizing, selecting, communicating, and
+evaluating the required quality attributes for a software system. A
+hierarchical breakdown of quality factors, quality sub-factors, and
+metrics for a software system.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.10
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>metrics
+sample</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A set of metric values that is drawn from the metrics database and
+used in metrics validation.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.11
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>metric
+validation</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+The act or process of ensuring that a metric reliably predicts or
+assesses a quality factor.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.12
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>metric
+value</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A metric output or an element that is from the range of a metric.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.13
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>predictive
+metric</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A metric applied during development and used to predict the values of
+a software quality factor.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.14
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>predictive
+metric value</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A numerical target related to a quality factor to be met during
+system development. This is an intermediate requirement that is an
+early indicator of final system performance. For example, design or
+code errors may be early predictors of final system reliability.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.15
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>process
+metric</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A metric used to measure characteristics of the methods, techniques,
+and tools employed in developing, implementing, and maintaining the
+software system</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.16
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>product
+metric</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A metric used to measure the characteristics of any intermediate or
+Þnal product of the software development process.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.17
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>quality
+attribute</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A characteristic of software, or a generic term applying to quality
+factors, quality subfactors, or metric values.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.18
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>quality
+factor</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A management-oriented attribute of software that contributes to its
+quality.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.19
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>quality
+factor sample</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A set of quality factor values that is drawn from the metrics
+database and used in metrics validation.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.20
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>quality
+factor value</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A value of the direct metric that represents a quality factor. See
+also: metric value.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.21
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>quality
+requirement</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A requirement that a software attribute be present in software to
+satisfy a contract, standard, specification, or other formally
+imposed document.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.22
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>quality
+subfactor</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A decomposition of a quality factor or quality subfactor to its
+technical components.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.23
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>software
+component</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A general term used to refer to a software system or an element, such
+as module, unit, data, or document.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.24
+</font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt"><b>software
+quality metric</b></font></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A function whose inputs are software data and whose output is a
+single numerical value that can be interpreted as the degree to which
+software possesses a given attribute that affects its quality.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">2.25
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>validated
+metric</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+A metric whose values have been statistically associated with
+corresponding quality factor values.</font></font></p>
+<h1 style="font-style: normal">3. Software quality metrics framework
+(informative)</h1>
+<p style="margin-bottom: 0in; font-style: normal"><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">Software
+quality</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+is the </font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>degree</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+to which software possesses a desired combination of quality
+attributes. The </font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>purpose</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+of software metrics is to make assessments throughout the software
+life cycle as to whether the software quality requirements are being
+met. The use of software metrics reduces subjectivity in the
+assessment and control of software quality by providing a
+quantitative basis for making decisions about software quality.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">However,
+the use of software metrics does not eliminate the need for human
+judgment in software assessments. The use of software metrics within
+an organization or project is expected to have a beneficial effect by
+making software quality more visible.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">More
+specifically, the use of this standards methodology for measuring
+quality enables an organization to:</font></font></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Assess
+	achievement of quality goals;</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Establish
+	quality requirements for a system at its outset;</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Establish
+	acceptance criteria and standards;</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Evaluate
+	the level of quality achieved against the established requirements;</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Detect
+	anomalies or point to potential problems in the system;</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Predict
+	the level of quality that will be achieved in the future;</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Monitor
+	changes in quality when software is modified;</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Assess
+	the ease of change to the system during product evolution;</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Validate
+	a metrics set.</font></font></p>
+	<p style="margin-bottom: 0in; font-style: normal"></p>
+</ul>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+software quality metrics framework shown in Figure 1 is designed to
+be flexible. It permits additions, deletions, and modifications of
+quality factors, quality subfactors, and metrics. Each level may be
+expanded to several sub levels. The framework can thus be applied to
+all systems and can be adapted as appropriate without changing the
+basic concept.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><br/>
+
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt"><b>Figure
+1</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+Software quality metrics framework</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><img src="F1.png" name="Image1" align="left" width="1218" height="774">
+  <br clear="left"/>
+</img>
+<br/>
+
+</p>
+<p style="margin-bottom: 0in; font-style: normal; page-break-before: always">
+<br/>
+
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+first level of the software quality metrics framework hierarchy
+begins with the establishment of quality requirements by the
+assignment of various quality attributes, which are used to describe
+the quality of the entity system X. All attributes defining the
+quality requirements are agreed upon by the project team, and then
+the definitions are established. Quality factors that represent
+management and user-oriented views are then assigned to the
+attributes. If necessary, quality sub factors are then assigned to
+each quality factor. Associated with each quality factor is a direct
+metric that serves as a quantitative representation of a quality
+factor. For example, a direct metric for the factor reliability could
+be mean time to failure (MTTF). Identify one or more direct metrics
+and target values to associate with each factor, such as an execution
+time of 1 hour, that is set by project management. Otherwise, there
+is no way to determine whether the factor has been achieved.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">At
+the second level of the hierarchy are the quality subfactors that
+represent software-oriented attributes that indicate quality. These
+can be obtained by decomposing each quality factor into measurable
+software attributes. Quality subfactors are independent attributes of
+software, and therefore may correspond to more than one quality
+factor. The quality subfactors are concrete attributes of software
+that are more meaningful than quality factors to technical personnel,
+such as analysts, designers, programmers, testers, and maintainers.
+The decomposition of quality factors into quality subfactors
+facilitates objective communication between the manager and the
+technical personnel regarding the quality objectives.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">At
+the third level of the hierarchy the quality subfactors are
+decomposed into metrics used to measure system products and processes
+during the development life cycle. Direct metric values, or quality
+factor values, are typically unavailable or expensive to collect
+early in the software life cycle.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt"><b>From
+top to bottom</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+the framework facilitates:</font></font></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Establishment
+	of quality requirements, in terms of quality factors, by managers
+	early in a system's life cycle;</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Communication
+	of the established quality factors, in terms of quality subfactors,
+	to the technical personnel;</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Identification
+	of metrics that are related to the established quality factors and
+	quality subfactors.</font></font></p>
+</ul>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt"><b>From
+bottom to top</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+the framework enables the managerial and technical personnel to
+obtain feedback by</font></font></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Evaluating
+	the software products and processes at the metrics level;</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Analyzing
+	the metric values to estimate and assess the quality factors.</font></font></p>
+</ul>
+<h1 style="font-style: normal">4. The software quality metrics
+methodology</h1>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+software quality metrics methodology is a systematic approach to
+establishing quality requirements and identifying, implementing,
+analyzing, and validating the process and product software quality
+metrics for a software system. It comprises five steps (see 4.1
+through 4.5).</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">These
+steps are intended to be applied iteratively because insights gained
+from applying a step may show the need for further evaluation of the
+results of prior steps. Each step states the activities needed to
+accomplish the indicated results.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.1
+Establish software quality requirements</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+result of this step is a list of the quality requirements. The
+activities to accomplish this result are given in 4.1.1 through
+4.1.3.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.1.1
+Identify a list of possible quality requirements</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Identify
+quality requirements that are applicable to the software system. Use
+organizational experience, required standards, regulations, or laws
+to create this list. In addition, list other system requirements that
+may affect the feasibility of the quality requirements. Consider
+contractual requirements and acquisition concerns, such as cost or
+schedule constraints, warranties, customer metrics requirements, and
+organizational self-interest. Do not rule out mutually exclusive
+requirements at this point. Focus on quality factor/direct metric
+combinations instead of predictive metrics.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Ensure
+that all parties involved in the creation and use of the system
+participate in the quality requirements identification process.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.1.2
+Determine the list of quality requirements</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt"><b>Rate</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+each of the listed quality requirements by importance. Determine the
+list of the possible quality requirements by doing the following:</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">a)
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>Survey
+all involved parties</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">.
+Discuss the relative priorities of the requirements with all involved
+parties. Have each group weigh the quality requirements against the
+other system requirements and constraints. Ensure that all viewpoints
+are considered.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">b)
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>Create
+the list of quality requirements</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">.
+Resolve the results of the survey into a single list of quality
+requirements. The proposed quality factors for this list may have
+cooperative or conflicting relationships. Resolve any conflicts among
+requirements at this point. In addition, if the choice of quality
+requirements is in conflict with cost, schedule, or system
+functionality, alter one or the other.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Exercise
+care in choosing the desired list to ensure that the requirements are
+technically feasible, reasonable, complementary, achievable, and
+verifiable. Obtain agreement by all parties to this final list.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.1.3
+Quantify each quality factor</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">For
+each quality factor, assign one or more direct metrics to represent
+the quality factor, and assign direct metric values to serve as
+quantitative requirements for that quality factor. For example, if
+high efficiency was one of the quality requirements from 4.1.2,
+assign a direct metric (e.g., actual resource utilization/ allocated
+resource utilization with a value of 90%). Use direct metrics to
+verify the achievement of the quality requirements.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+quantified list of quality requirements and their definitions again
+is approved by all involved parties.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.2
+Identify software quality metrics</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+result of this step is an approved metrics set. The activities to
+accomplish this result are given in 4.2.1 through 4.2.3.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.2.1
+Apply the software quality metrics framework</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+quantified list of quality requirements and their definitions again
+is approved by all involved parties. Create a chart of the quality
+requirements based on the hierarchical tree structure found in Figure
+1. At this </font></font>
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">point,
+complete only the quality factor level. Next, decompose each quality
+factor into quality subfactors as indicated in Clause 3. Continue the
+decomposition into quality subfactors for as many levels as needed
+until the quality subfactor level is complete.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Using
+the software quality metrics framework, decompose the quality
+subfactors into metrics. For each validated metric on the metric
+level, assign a target value and a critical value and range that
+should be achieved during development.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Have
+the framework revised and the target values for the metrics reviewed
+and approved by all involved parties.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Use
+only validated metrics (i.e., either direct metrics or metrics
+validated with respect to direct metrics) to assess current and
+future product and process quality (see 4.5 for a description of the
+validation methodology). Retain non-validated metrics as candidates
+for future analysis. Furthermore, use only metrics that are
+associated with the quality requirements of the software project.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><u><font face="serif"><font size="4" style="font-size: 15pt">Document
+each metric using the format shown in Table 1.</font></font></u></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.2.2
+Perform a cost-benefit analysis</b></font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.2.2.1
+Identify the costs of implementing the metrics</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Identify
+and document (see Table 1) all the costs associated with each metric
+in the metrics set. For each metric, estimate and document the
+following costs and impacts:</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">a)
+Metrics utilization costs incurred by collecting data; automating
+metrics calculations; and applying, interpreting, and reporting the
+results;</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">b)
+Software change costs incurred by changing the development process;</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">c)
+Organizational structure change costs incurred by producing the
+software;</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">d)
+Special equipment required to implement the metrics plan;</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">e)
+Training required to implement the metrics plan.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><br/>
+
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt"><b>Table
+1 </b></font></font><font face="serif"><font size="4" style="font-size: 15pt">Metrics
+set</font></font></p>
+<table width="100%" cellpadding="4" cellspacing="0">
+	<col width="63*">
+	<col width="193*">
+	<tr valign="top">
+		<td width="25%" style="border-top: 1px double #808080; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font color="#800000"><font size="4" style="font-size: 15pt"><b><span style="background: #eeeeee">Item</span></b></font></font></p>
+		</td>
+		<td width="75%" style="border: 1px double #808080; padding: 0.04in">
+			<p style="font-style: normal"><font color="#800000"><font size="4" style="font-size: 15pt"><b><span style="background: #eeeeee">Description</span></b></font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Name
+			</font>
+			</p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Name
+			given to the metric.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Costs
+			</font>
+			</p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Costs
+			of using the metric (see 4.2.2.1).</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Benefits</font></p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Benefits
+			of using the metric (see 4.2.2.2).</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Impact</font></p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Indication
+			of whether a metric can be used to alter or halt the project (ask,
+			Can the metric be used to indicate deficient software quality?).</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Target
+			value </font>
+			</p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Numerical
+			value of the metric that is to be achieved in order to meet
+			quality requirements. Include the critical value and the range of
+			the metric.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Quality
+			factors </font>
+			</p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Quality
+			factors that are related to this metric.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Tools
+			</font>
+			</p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Software
+			or hardware tools that are used to gather and store data, compute
+			the metric, and analyze the results.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Application
+			</font>
+			</p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Description
+			of how the metric is used and what its area of application is.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Data
+			items </font>
+			</p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Input
+			values that are necessary for computing the metric values.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Computation
+			</font>
+			</p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Explanation
+			of the steps involved in the metrics computation.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Interpretation</font></p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Interpretation
+			of the results of the metrics computation (see 4.4.1).</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Considerations
+			</font>
+			</p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Considerations
+			of the appropriateness of the metric (e.g., Can data be collected
+			for this metric? Is the metric appropriate for this application?).</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Training
+			required </font>
+			</p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Training
+			required to implement or use the metric.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Example</font></p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">An
+			example of applying the metric.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Validation
+			history </font>
+			</p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Names
+			of projects that have used the metric, and the validity criteria
+			the metric has satisfied.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="25%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">References
+			</font>
+			</p>
+		</td>
+		<td width="75%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">References,
+			such as a list of projects and project details, giving further
+			details on understanding or implementing the metric.</font></p>
+		</td>
+	</tr>
+</table>
+<p style="margin-bottom: 0in; font-style: normal"><br/>
+
+</p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.2.2.2
+Identify the benefits of applying the metrics</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Identify
+and document the benefits that are associated with each metric in the
+metrics set (see Table 1). Benefits to consider include the
+following:</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">a)
+Identify </font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>quality
+goals</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+and increase awareness of the goals.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">b)
+Provide timely </font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>feedback</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+of quality problems to the development process.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">c)
+Increase customer satisfaction by quantifying the quality of the
+software before it is delivered.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">d)
+Provide a quantitative basis for making decisions about software
+quality.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">e)
+Reduce software life cycle costs by improving process efficiency.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.2.2.3
+Adjust the metrics set</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Weigh
+the benefits, tangible and intangible, against the costs of each
+metric. If the costs exceed the benefits of a given metric, alter or
+delete it from the metrics set. On the other hand, for metrics that
+remain, make plans for any necessary changes to the software
+development process, organizational structure, tools, and training.
+In most cases it will not be feasible to quantify benefits. In these
+cases, exercise judgment in weighing qualitative benefits against
+quantitative costs.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.2.3
+Gain commitment to the metrics set</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Have
+all involved parties review the adjusted metrics. Have the metrics
+set adopted and supported by this group.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.3
+Implement the software quality metrics</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+outputs of this step are a description of the data items, a
+traceability matrix, and a training plan and schedule. The activities
+to accomplish this result are given in 4.3.1 through 4.3.3.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.3.1
+Define the data collection procedures</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">For
+each metric in the metrics set, determine the data that will be
+collected and determine the assumptions that will be made about the
+data (e.g., random sample and subjective or objective measure). </font></font>
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Show
+the flow of data from point of collection to evaluation of metrics. </font></font>
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Identify
+tools and describe how they will be used.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Describe
+data storage procedures. </font></font>
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Establish
+a traceability matrix between metrics and data items.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Identify
+the organizational entities that will participate in data collection,
+including those responsible for monitoring data collection. </font></font>
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Describe
+the training and experience required for data collection and the
+training process for personnel involved.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Describe
+each data item thoroughly, using the format shown in Table 2.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.3.2
+Prototype the measurement process</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Test
+the data collection and metrics computation procedures on selected
+software that will act as a prototype. Select samples that are
+similar to the project(s) on which the metrics will be used. Make an
+analysis to deter mine if the data are collected uniformly and if
+instructions have been interpreted consistently. In particular, check
+data that require subjective judgments to determine if the
+descriptions and instructions are clear enough to ensure uniform
+results.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Examine
+the cost of the measurement process for the prototype to verify or
+improve the cost analysis.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Use
+the results collected from the prototype to improve the metric
+descriptions (see Table 1) and descriptions of data items (see Table
+2).</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.3.3
+Collect the data and compute the metric values</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Using
+the formats in Tables 1 and 2, collect and store data in the project
+metrics database at the appropriate time in the life cycle. Check the
+data for accuracy and proper unit of measure.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><br/>
+
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt"><b>Table
+2 </b></font></font><font face="serif"><font size="4" style="font-size: 15pt">Data
+item description</font></font></p>
+<table width="100%" cellpadding="4" cellspacing="0">
+	<col width="69*">
+	<col width="187*">
+	<tr valign="top">
+		<td width="27%" style="border-top: 1px double #808080; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font color="#800000"><font size="4" style="font-size: 15pt"><b>Item</b></font></font></p>
+		</td>
+		<td width="73%" style="border: 1px double #808080; padding: 0.04in">
+			<p style="font-style: normal"><font color="#800000"><font size="4" style="font-size: 15pt"><b>Description</b></font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="27%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Name</font></p>
+		</td>
+		<td width="73%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Name
+			given to the data item.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="27%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Metrics</font></p>
+		</td>
+		<td width="73%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Metrics
+			that are associated with the data item.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="27%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Definition</font></p>
+		</td>
+		<td width="73%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Straightforward
+			description of the data item.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="27%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Source</font></p>
+		</td>
+		<td width="73%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Location
+			of where the data item originates.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="27%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Collector</font></p>
+		</td>
+		<td width="73%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Entity
+			responsible for collecting the data.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="27%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Timing</font></p>
+		</td>
+		<td width="73%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Time(s)
+			in life cycle at which the data item is to be collected. (Some
+			data items are collected more than once.)</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="27%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Procedures</font></p>
+		</td>
+		<td width="73%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Methodology
+			(e.g., automated or manual) used to collect the data.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="27%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Storage</font></p>
+		</td>
+		<td width="73%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Location
+			of where the data are stored.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="27%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Representation</font></p>
+		</td>
+		<td width="73%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Manner
+			in which the data are represented, e.g., precision and format
+			(Boolean, dimensionless, etc.).</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="27%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Sample</font></p>
+		</td>
+		<td width="73%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Method
+			used to select the data to be collected and the percentage of the
+			available data that is to be collected.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="27%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Verification</font></p>
+		</td>
+		<td width="73%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Manner
+			in which the collected data are to be checked for errors.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="27%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Alternatives</font></p>
+		</td>
+		<td width="73%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Methods
+			that may be used to collect the data other than the preferred
+			method.</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="27%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Integrity</font></p>
+		</td>
+		<td width="73%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in">
+			<p style="font-style: normal"><font size="4" style="font-size: 15pt">Person(s)
+			or organization(s) authorized to alter the data item and under
+			what conditions.</font></p>
+		</td>
+	</tr>
+</table>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Monitor
+the data collection. If a sample of data is used, verify that
+requirements such as randomness, minimum size of sample, and
+homogeneous sampling have been met. Check for uniformity of data if
+more than one person is collecting it.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Compute
+the metric values from the collected data.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.4
+Analyze the software metrics results</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+results of this step are changes to the organization and development
+process, which are indicated from interpreting and using the
+measurement data. The activities to accomplish this result are given
+in 4.4.1 through 4.4.4.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.4.1
+Interpret the results</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Interpret
+and record the results. Analyze the differences between the collected
+metric data and the target values. Investigate significant
+differences.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.4.2
+Identify software quality</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Identify
+and review quality metric values for software components. Identify
+quality metric values that are outside the anticipated tolerance
+intervals (low or unexpected high quality) for further study.
+Unacceptable quality may be manifested as excessive complexity,
+inadequate documentation, lack of traceability, or other undesirable
+attributes. The existence of such conditions is an indication that
+the software may not satisfy quality requirements when it becomes
+operational. Because many of the direct metrics that are usually of
+interest cannot be collected during software development (e.g.,
+reliability metrics), use validated metrics when direct metrics are
+not available. Use direct or validated metrics for software
+components and process steps. Compare metric values with critical
+values of the metrics. Analyze in detail software components whose
+values deviate from the critical values. Depending on the results of
+the analysis, redesign (acceptable quality is achieved by redesign),
+scrap (quality is so poor that redesign is not feasible), or do not
+change (deviations for critical metric values are judged to be
+insignificant) the software components.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.4.3
+Make software quality predictions</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Use
+validated metrics during development to make predictions of direct
+metric values. Compare predicted values of direct metrics with target
+values to determine whether to flag software components for detailed
+analysis. Make predictions for software components and process steps.
+Analyze in detail software components and process steps whose
+predicted direct metric values deviate from the target values.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.4.4
+Ensure compliance with requirements</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Use
+direct metrics to ensure compliance of software products with quality
+requirements during system and acceptance testing. Use direct metrics
+for software components and process steps. Compare these metric
+values with target values of the direct metrics. Classify software
+components and process steps whose measurements deviate from the
+target values as non-compliant.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.5
+Validate the software quality metrics</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+result of this step is a set of validated metrics for making
+predictions of quality factor values. The activities to accomplish
+this result are given in 4.5.1 through 4.5.3.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.5.1
+Apply the validation methodology</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><u>purpose</u></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+of </font></font><font face="serif"><font size="4" style="font-size: 15pt"><u>metrics
+validation</u></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+is to </font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">identify
+both </font></font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt"><u>product</u></font></font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">
+and </font></font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt"><u>process</u></font></font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">
+metrics that can predict specified quality factor values</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">,
+which are quantitative representations of quality requirements.
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><u><span style="background: #ffff00">Metrics
+shall indicate whether quality requirements have been achieved or are
+likely to be achieved in the future.</span></u></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+When it is possible to measure quality factor values at the desired
+point in the life cycle,</font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">
+direct metrics</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+shall be used to evaluate software quality. At some points in the
+life cycle, certain quality factor values (e.g., reliability) are not
+available. They are obtained after delivery or late in the project.
+In these cases, validated metrics shall be used early in a project to
+predict quality factor values.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Validation
+does not mean a universal validation of the metrics for all
+applications. Rather it refers to validating the </font></font><font face="serif"><font size="4" style="font-size: 15pt"><i>relationship
+between a set of metrics and a quality factor for a given
+application</i></font></font><font face="serif"><font size="4" style="font-size: 15pt">.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+history of the application of metrics indicates that </font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt"><i>predictive
+metrics</i></font></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+were seldom validated (i.e., it was not demonstrated through
+statistical analysis that the metrics measured software
+characteristics that they purported to measure). However, </font></font><font face="serif"><font size="4" style="font-size: 15pt"><u>it
+is important that </u></font></font><font face="serif"><font size="4" style="font-size: 15pt"><i><u>predictive
+metrics</u></i></font></font><font face="serif"><font size="4" style="font-size: 15pt"><u>
+be validated before they are used to evaluate software quality.</u></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+Otherwise, metrics might be misapplied (i.e., metrics might be used
+that have little or no relationship to the desired quality
+characteristics).</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Although
+quality subfactors are useful when identifying and establishing
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><u>quality
+factors and metrics</u></font></font><font face="serif"><font size="4" style="font-size: 15pt">,
+they </font></font><font face="serif"><font size="4" style="font-size: 15pt"><u>are
+not used in metrics validation</u></font></font><font face="serif"><font size="4" style="font-size: 15pt">,
+because</font></font><font face="serif"><font size="4" style="font-size: 15pt"><u>
+the focus in validation is on determining whether a statistically
+significant relationship exists between predictive metric values and
+quality factor values</u></font></font><font face="serif"><font size="4" style="font-size: 15pt">.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Quality
+factors may be affected by multiple variables. A single metric,
+therefore, may not sufficiently represent any one quality factor if
+it ignores these other variables.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.5.2
+Apply validity criteria</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">To
+be considered valid, a </font></font><font face="serif"><font size="4" style="font-size: 15pt"><u>predictive
+metric</u></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+shall have a</font></font><font face="serif"><font size="4" style="font-size: 15pt"><i>
+high degree of association with the quality factors</i></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+it represents by conforming to the thresholds listed below. A metric
+may be valid with respect to certain validity criteria and invalid
+with respect to other criteria. For the purpose of assessing </font></font><font face="serif"><font size="4" style="font-size: 15pt"><i>whether
+a metric is valid</i></font></font><font face="serif"><font size="4" style="font-size: 15pt">,
+the following thresholds shall be designated:</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">V
+- square of the linear correlation coefficient</font></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">B
+- rank correlation coefficient</font></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">A
+- prediction error</font></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font color="#800000">&#120630;
+<font face="serif"><font size="4" style="font-size: 15pt">-
+confidence level</font></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">P
+- success rate</font></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+description of each validity criterion is given below. For a
+numerical example of metrics validation calculations, see Annex B.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">a)
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>Correlation</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">.
+The variation in the quality factor values explained by the variation
+in the metric values, which is given by the square of the linear
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><i>correlation
+coefficient (R</i></font></font><sup><font face="serif"><font size="4" style="font-size: 15pt"><i>2</i></font></font></sup><font face="serif"><font size="4" style="font-size: 15pt"><i>)</i></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+between the metric and the corresponding quality factor, </font></font><font face="serif"><font size="4" style="font-size: 15pt"><u>shall
+exceed V.</u></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">This
+criterion assesses whether there is a sufficiently strong linear
+association between a quality factor and a metric to warrant using
+the metric as a substitute for the quality factor, when it is
+infeasible to use the latter.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">b)
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>Tracking</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">.
+If a metric M is directly related to a quality factor F, for a given
+product or process, then a change in a quality factor value from F </font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">T1</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+to F </font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">T2</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+, at times T</font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">1
+</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">and
+T</font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">2,</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+shall be accompanied by a change in metric value from M </font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">T1</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+to M </font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">T2
+</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">.
+This change shall be in the same direction (e.g., if F increases, M
+increases). If M is inversely related to F, then a change in F shall
+be accompanied by a change in M in the opposite direction (e.g., if F
+increases, M decreases). To perform this test, compute the
+coefficient of rank correlation (r) from n paired values of the
+quality factor and the metric.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Each
+of the quality factor/metric pairs shall be measured at the same
+point in time, and the n pairs of values are measured at n points in
+time. The absolute value of r shall exceed B. This criterion assesses
+whether a metric is capable of tracking changes in product or process
+quality over the life cycle.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">c)
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>Consistency</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">.
+If quality factor values F</font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">1</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+, F</font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">2</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+, F</font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">n</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+, corresponding to products or processes 1, 2, n, have the
+relationship F</font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">1</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+&gt; F</font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">2</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+&gt; F</font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">n</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+, then the corresponding metric values shall have the relationship M
+</font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">1
+</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">&gt;
+M </font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">2</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+&gt; M </font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">n
+</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">.
+To perform this test, compute the coefficient of rank correlation (r)
+between paired values (from the same software components) of the
+quality factor and the metric. The absolute value of</font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">
+r shall exceed B</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">This
+criterion assesses whether there is consistency between the ranks of
+the quality factor values of a set of software components and the
+ranks of the metric values for the same set of software components.
+This criterion shall be used to determine whether a metric can
+accurately rank, by quality, a set of products or processes.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">d)
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>Predictability</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">.
+If a metric is used at time T</font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">1</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+to predict a quality factor for a given product or process, it shall
+predict a </font></font><font face="serif"><font size="4" style="font-size: 15pt"><i>related
+quality factor</i></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+Fp</font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">T2</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+with an accuracy of</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><img src="VUM_sw_metrics_Part2_html_6d0ad3dfff43e319.gif" name="Object1" hspace="8" width="116" height="43"/>
+
+                           <font face="serif"><font size="4" style="font-size: 15pt">(1)</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><br/>
+
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">where</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt"><b>Fa</b></font></font><sub><font face="serif"><font size="4" style="font-size: 15pt"><b>T2</b></font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+is the </font></font><font face="serif"><font size="4" style="font-size: 15pt"><i>actual</i></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+value of F at time T2.</font></font></p>
+<p style="margin-bottom: 0in"><i><font face="serif"><font size="4" style="font-size: 15pt">This
+criterion assesses whether a metric is capable of predicting a
+quality factor value with the required accuracy.</font></font></i></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">e)
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>Discriminative
+power</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">.
+A metric shall be able to discriminate between high-quality software
+components (e.g., high MTTF) and low-quality software components
+(e.g., low MTTF). The set of metric values associated with the former
+should be significantly higher (or lower) than those associated with
+the latter.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">This
+criterion assesses whether a metric is capable of separating a set of
+high-quality software components from a set of low-quality
+components. This capability identified critical values for metrics
+that shall be used to identify software components that have
+unacceptable quality. To perform this test, put the quality factor
+and metric data in the form of a contingency table and compute the
+chi-square statistic. This value shall exceed the chi-square
+statistic corresponding to </font></font><font face="Symbola"><font size="4" style="font-size: 15pt">&#120688;.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">f)
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>Reliability</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">.
+A metric shall demonstrate the correlation, tracking, consistency,
+predictability, and discriminative power properties for at least P%
+of the applications of the metric.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">This
+criterion is used to ensure that a metric has passed a validity test
+over a sufficient number or percentage of applications so that there
+shall be confidence that the metric can perform its intended function
+consistently.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.5.3
+Validation procedure</b></font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.5.3.1
+Identify the quality factors sample</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">A
+sample of quality factors shall be drawn from the metrics database.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.5.3.2
+Identify the metrics sample</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">A
+sample from the same domain (e.g., same software components), as used
+in 4.5.3.1, shall be drawn from the metrics database.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.5.3.3
+Perform a statistical analysis</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+analysis described in 4.5.2 shall be performed.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Before
+a metric is used to evaluate the quality of a product or process, it
+shall be validated against the criteria described in 4.5.2. If a
+metric does not pass all of the validity tests, it shall only be used
+according to the criteria prescribed by those tests (e.g., if it only
+passes the tracking validity test, it shall be used only for tracking
+the quality of a product or process).</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><br/>
+
+</p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.5.3.4
+Document the results</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Documented
+results shall include the direct metric, predictive metric,
+validation criteria, and numerical results, as a minimum.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.5.3.5
+Re-validate the metrics</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">A
+validated metric may not necessarily be valid in other environments
+or future applications. Therefore, a predictive metric shall be
+revalidated before it is used for another environment or application.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>4.5.3.6
+Evaluate the stability of the environment</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Metrics
+validation shall be undertaken in a stable development environment
+(i.e., where the design language, implementation language, or project
+development tools do not change over the life of the project in which
+validation is performed). An organization initiates conformance to
+the validation requirements of this standard by collecting and
+validating metrics on a project (the validation project). This
+project shall be similar to the one in which the metrics are applied
+(the application project) with respect to software engineering
+skills, application, size, and software engineering environment. </font></font>
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Validation
+and application of metrics shall be performed during the same life
+cycle phases on different projects. For example, if metric X is
+collected during the design phase of project A and later validated
+with respect to quality factor Y, which is collected during the
+operations phase of project A, metric X would be used during the
+design phase of project B to predict quality factor Y with respect to
+the operations phase of project B.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><br/>
+
+</p>
+<h1 style="font-style: normal">Annex A</h1>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">(informative)</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>Additional
+frameworks</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">This
+annex describes additional frameworks that could be considered in
+establishing a metrics framework in an organization.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>A.1
+Goal/question/metric (GQM) paradigm</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+GQM paradigm is a mechanism for defining and evaluating a set of
+operational goals, using measurement. It represents a systematic
+approach to tailoring and integrating goals with models of the
+software processes, products, and quality perspectives of interest,
+based upon the specific needs of the project and the organization.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+goals are defined in an operational, tractable way by refining them
+into a set of quantifiable questions that are used to extract the
+appropriate information from the models. The questions and models, in
+turn, define a specific set of metrics and data for collection and
+provide a framework for interpretation.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+GQM paradigm was originally developed for evaluating defects for a
+set of projects in the National Aeronautics and Space Administration
+(NASA)/Goddard Space Flight Center (GSFC) environment. The
+application involved a set of case study experiments. It was then
+expanded to include various types of experimental approaches,
+including controlled experiments.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Although
+the GQM paradigm was originally used to define and evaluate goals for
+a particular project in a particular environment, its use has been
+expanded to a larger context. It is used as the goal-setting step in
+an evolutionary improvement paradigm tailored for a software
+development organization, the Quality Improvement Paradigm (QIP), and
+an organizational approach for building software competencies and
+supplying them to projects, the Experience Factory (EF).</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><u><font face="serif"><font size="4" style="font-size: 15pt">Applying
+the GQM paradigm involves</font></font></u></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">a)
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>Developing
+a set </b></font></font><font face="serif"><font size="4" style="font-size: 15pt">of
+corporate, division, and project </font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>goals
+for productivity and quality</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+(e.g., customer satisfaction, on-time delivery, and improved
+quality);</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">b)
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>Generating
+questions </b></font></font><font face="serif"><font size="4" style="font-size: 15pt">(based
+upon models) that define those goals as completely as possible in a
+quantifiable way;</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">c)
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>Specifying
+the measures</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+needed to be collected to answer those questions and to track process
+and product conformance to the goals;</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">d)</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>
+Developing mechanisms for data collection;</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">e)
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>Collecting,
+validating, and analyzing</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+the data in real time to provide feedback to projects for corrective
+action, and analyzing the data in a post-mortem fashion to assess
+conformance to the goals and make recommendations for future
+improvements.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><br/>
+
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+process of setting goals and refining them into quantifiable
+questions is complex and requires experience. In order to support
+this process, a set of templates for setting goals, and a set of
+guidelines for deriving questions and metrics have been developed.
+These templates and guidelines reflect the GSFC experience from
+having applied the GQM paradigm in a variety of environments. The
+current set of templates and guidelines represent our current
+thinking and well may change over time as experience grows.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt"><b>Goals</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+may be defined for any object, for a variety of reasons, with respect
+to various models of quality, from various points of view, relative
+to a particular environment. The goal is defined by filling in a set
+of values for the various parameters in the template. </font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>Template
+parameters</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+include </font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>purpose</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+(what object and why), </font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>perspective</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+(what aspect and who), and the </font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>environmental</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+characteristics (where).</font></font></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt"><b>Purpose</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+	Analyze some (</font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">objects</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+	processes, products, other experience models) for the purpose of
+	(why: characterization, evaluation, prediction, motivation,
+	improvement)</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt"><b>Perspective</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+	with respect to (</font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">what
+	aspect</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+	cost, correctness, defect removal, changes, reliability, user
+	friendliness, etc.) from the point of view of (</font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">who</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+	user, customer, manager, developer, corporation,etc.)</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt"><b>Environment</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+	in the following context: (</font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">where</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+	problem factors, people factors, resource factors, process factors,
+	etc.)</font></font></p>
+</ul>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt"><b>Example</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">:
+Analyze the (system testing method) for the purpose of (evaluation)
+with respect to a model of (defect removal effectiveness) from the
+point of view of the (developer) in the following context: the
+standard NASA/GSFC environment, i.e., process model [e.g., Software
+Engineering Laboratory (SEL) version of the waterfall model],
+application (ground support software for satellites), machine, etc.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><br/>
+
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>purpose</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+is meant to define the object or objects of study, what is going to
+be done, and why it is being done. There may be several objects and
+several purposes. It is clear that the author must avoid complex
+objectives. In some cases it may be wise to break a complex goal into
+several simpler goals.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>perspective</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+is meant to define a particular angle or set of angles for
+evaluation. The author may choose more than one model, e.g., defects
+and changes, and more than one point of view, e.g., the corporation
+and the project manager. The </font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>author</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+should define the model and assume the mind-set of the person who
+wants to know the information so that all aspects of the evaluation
+are performed from that point of view.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>purpose</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+of the environment is to define the context of the study by defining
+all aspects of the project so it can be categorized correctly and the
+appropriate set of similar projects can be found as a basis of
+comparison. Types of quality factors include process factors, people
+factors, problem factors, methods, tools, and constraints. In
+general, the environment should include all those quality factors
+that may be common among all projects and become part of the database
+for future comparisons. Thus the environmental quality factors,
+rather than the values associated with these quality factors, should
+be consistent across several goals within the project and the
+organization. Some quality factors may have already been specified as
+part of the particular object or model under study and thus appear
+there in greater depth and granularity.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>A.2
+Practical software measurement (PSM)</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">This
+clause contains an overview of PSM. Software measurement does not
+replace other management skills and techniques. Neither does it
+operate in a vacuum. In particular, measurement enables the other
+quantitative disciplines of risk management and financial performance
+management. These three disciplines each have a planning and a
+tracking part.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">While
+these disciplines are often promoted and implemented independently,
+the greatest value is derive from an integrated approach. Risk
+analysis helps to identify and prioritize issues that drive the
+definition of the measurement process. The measurement process helps
+quantify the likelihood and impact of risks. The measurement process
+provides an objective basis for reporting financial performance using
+techniques like earned value. Risks, status measures, and financial
+performance all need to be considered when making project decisions.
+Together, these three quantitative management disciplines complement
+traditional management skills and techniques.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">How
+does an organization that wants to take advantage of the benefits of
+software measurement proceed? A number of specific measurement
+prescriptions have been offered to government and industry
+organizations with limited success. Rather than propose another fixed
+measurement scheme, PSM presents a flexible measurement approach. PSM
+views measurement as a process that must be adapted to the technical
+and management characteristics of each project. This measurement
+process is risk and issue driven. That is, it provides information
+about the specific risks, issues, and objectives important to project
+success.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+PSM approach defines </font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">three
+basic measurement activities </font></font></font><font face="serif"><font size="4" style="font-size: 15pt">necessary
+to get measurement into practice.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+first two activities, </font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">tailoring
+measures to address project information</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+needs and </font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">applying
+measures to obtain insight into project risks and issues</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">,
+are the basic subprocesses of the measurement process. The third
+activity, </font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">implementing
+measurement</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">,
+includes the tasks necessary to establish this measurement process
+within an organization.</font></font></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+	</font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">tailoring
+	activity</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+	addresses the</font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">
+	selection of an effective and economical set of measures</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+	for the project.</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+	</font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">application
+	activity </font></font></font><font face="serif"><font size="4" style="font-size: 15pt">involves
+	</font></font><font face="serif"><font size="4" style="font-size: 15pt"><u>collecting,
+	analyzing, and acting</u></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+	upon the data defined in the tailoring activity. PSM recommends that
+	these two activities be performed by a </font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">measurement
+	analyst</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+	who is </font></font><font face="serif"><font size="4" style="font-size: 15pt"><u>independent
+	of the software developer</u></font></font><font face="serif"><font size="4" style="font-size: 15pt">.</font></font></p>
+	<li/>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+	</font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">implementation
+	activity</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+	addresses the cultural and organizational changes necessary to
+	establish a measurement process. Implementing a measurement process
+	requires the support of project and organizational managers.</font></font></p>
+</ul>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt"><u>The
+measurement process must be integrated into the developer’s
+software process.</u></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+The nature of the developer’s process determines the opportunities
+for measurement. Because the software process itself is dynamic, the
+measurement process also must change and adapt as the project
+evolves. This makes the activities of </font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">measurement
+</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">tailoring
+and application </font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt"><i>iterative</i></font></font></font><font color="#800000"><font face="serif"><font size="4" style="font-size: 15pt">
+throughout the project life cycle</font></font></font><font face="serif"><font size="4" style="font-size: 15pt">.
+</font></font><font face="serif"><font size="4" style="font-size: 15pt"><i>The
+issues, measures, and analysis techniques change over time to best
+meet the project’s information needs.</i></font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>A.2.1
+Principles</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Each
+project is described by different management and technical
+characteristics, and by a specific set of software risks and issues.
+To address the unique measurement requirements of each project, PSM
+explains how to tailor and apply a generally defined software
+measurement process to meet specific project information needs. To
+help do this, PSM provides nine principles that define the
+characteristics of an effective measurement process. These principles
+are based upon actual measurement experience on successful projects.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">a)
+Project risks, issues, and objectives drive the measurement
+requirements.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">b)
+The developer’s process defines how the software is actually
+measured.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">c)
+Collect and analyze data at a level of detail sufficient to identify
+and isolate problems.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">d)
+Implement an independent analysis capability.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">e)
+Use a structured analysis process to trace the measures to the
+decisions.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">f)
+Interpret the measurement results in the context of other project
+information.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">g)
+Integrate software measurement into the project management process
+throughout the software life cycle.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">h)
+Use the measurement process as a basis for objective communication.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">I)
+Focus initially on single project analysis.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Experience
+has shown that a measurement process that adheres to these principles
+is more likely to succeed.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>A.2.2
+Issues</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+purpose of software measurement is to help management achieve project
+objectives, identify and track risks, satisfy constraints, and
+recognize problems early. These management concerns are referred to,
+collectively, as issues. Note that issues are not necessarily
+problems, but rather they define areas where problems may occur. An
+initial set of issues are identified at the outset of the project.
+This issue set evolves and changes as the project progresses. Almost
+all issues can be expressed as risks. Conducting a thorough risk
+analysis at project outset facilitates measurement implementation.
+However, even if a formal risk analysis has not been performed,
+issues still can be identified.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">PSM
+emphasizes identifying project issues at the start of a project and
+then using the measurement process to provide insight to those
+issues. While some issues are common to most or all projects, each
+project typically has some unique issues. Moreover, the priority of
+issues usually varies from project to project.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">The
+six </font></font><font face="serif"><font size="4" style="font-size: 15pt"><b>common
+software issues</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+addressed in this standard are as follows:</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">a)
+Schedule and progress;</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">b)
+Resources and cost;</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">c)
+Growth and stability;</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">d)
+Product quality;</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">e)
+Development performance;</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">f)
+Technical adequacy.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">These
+common issues may also be thought of as classes or categories of
+risks.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">At
+the start of a project, or when major changes are implemented, each
+of these issues is analyzed in terms of the feasibility of the plan.
+For example, the project manager may ask questions such as, “Is
+this a reasonable size estimate?” or, “Can the software be
+completed with the proposed amount of effort and schedule?” Once
+the project is underway, the manager’s concern turns to
+performance. The key questions then become ones such as, “I</font></font><font face="serif"><font size="4" style="font-size: 15pt"><i>s
+the project on schedule?” </i></font></font><font face="serif"><font size="4" style="font-size: 15pt">or,</font></font><font face="serif"><font size="4" style="font-size: 15pt"><i>
+“Is the quality good enough?</i></font></font><font face="serif"><font size="4" style="font-size: 15pt">”</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">It
+is important to note that software issues are not independent. For
+example, requirements growth may result in schedule delays or effort
+overruns. Moreover, the impact of the addition of work to a project
+(size growth) may be masked, in terms of level of effort, by
+stretching out the schedule. Thus, it is important that issues be
+considered together, rather than individually, to get a true
+understanding of project status.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Focusing
+measurement attention on items that provide information about the
+project's issues also minimizes the effort required for the
+measurement process. Resources are not expended collecting data that
+may not get used.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Experience
+from a wide variety of commercial and government organizations shows
+that the cost of implementing and operating a measurement process as
+described in PSM ranges from 1% to 5% of the project's software
+budget. This is a relatively small amount when compared to the cost
+of conventional review- and documentation-based project-monitoring
+techniques.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><br/>
+
+</p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>Annex
+B</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">(informative)</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>Sample
+metrics validation calculations</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><b><font face="serif"><font size="4" style="font-size: 15pt">B.1
+Correlation validity criterion</font></font></b></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Assume
+V, the square of the linear correlation coefficient, has been
+designated as 0.7 and the correlation coefficient between a
+complexity metric and the quality factor reliability is 0.9. The
+square of this is 0.81. Eighty one percent of the variation in the
+quality factor is explained by the variation in the metric. If this
+relationship is demonstrated over a representative sample of software
+components, conclude that the metric correlates with reliability.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>B.2
+Tracking validity criterion</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Assume
+B, the rank correlation coefficient, has been designated as 0.7.
+Further assume that a complexity metric is a measure of reliability.
+Then a change in the reliability of a software component is
+accompanied by an appropriate change in the complexity metric’s
+value. For example, if the product increases in reliability, the
+metric value also changes in a direction that indicates the product
+has improved. Assume mean time to failure (MTTF) is used to measure
+reliability and is equal to 1000 hours during testing (T1) and 1500
+hours during operation (T2). Also assume a complexity metric whose
+value is 8 in T1 and 6 in T2,where 6 is less complex than 8. Then
+complexity tracks reliability for this software component. Compute
+the coefficient of rank correlation r from n paired values of the
+quality factor and the metric over a representative sample of
+software components. If r exceeds 0.7, conclude that the metric
+tracks reliability (i.e., indicates changes in product reliability)
+over the software life cycle.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>B.3
+Consistency validity criterion</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Assume
+B, the rank correlation coefficient, has been designated as 0.7.
+Further assume the reliability of software components X, Y, and Z, as
+measured by MTTF, is 1000 hours, 1500 hours, and 800 hours,
+respectively, and the corresponding complexity metric values are 5,
+3, and 7, where low metric values are better than high values. Then
+the ranks for reliability and metric values, with 1 representing the
+highest rank, are as shown in Table B.1. Compute the coefficient of
+rank correlation r from n paired values of the quality factor and the
+metric over a representative sample of software components. If r
+exceeds 0.7, conclude that the metric is consistent and ranks the
+quality of software components. For example, the ranks establish
+priority of testing and allocation of budget and effort to testing
+(i.e., the worst software component receives the most attention,
+largest budget, and most staff).</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><br/>
+
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt"><b>Table
+B.1</b></font></font><font face="serif"><font size="4" style="font-size: 15pt">
+Ranks for reliability and metric values</font></font></p>
+<table width="100%" cellpadding="4" cellspacing="0">
+	<col width="85*">
+	<col width="86*">
+	<col width="85*">
+	<tr valign="top">
+		<td width="33%" style="border-top: 1px double #808080; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Software
+			component</font></font></p>
+		</td>
+		<td width="34%" style="border-top: 1px double #808080; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0.04in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Reliability
+			rank </font></font>
+			</p>
+		</td>
+		<td width="33%" style="border: 1px double #808080; padding: 0.04in">
+			<p style="font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Complexity
+			metric rank</font></font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="33%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="5" style="font-size: 18pt">Y</font></p>
+		</td>
+		<td width="34%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in" sdval="1" sdnum="1033;">
+			<p style="font-style: normal"><font size="5" style="font-size: 18pt">1</font></p>
+		</td>
+		<td width="33%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in" sdval="1" sdnum="1033;">
+			<p style="font-style: normal"><font size="5" style="font-size: 18pt">1</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="33%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="5" style="font-size: 18pt">X</font></p>
+		</td>
+		<td width="34%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in" sdval="2" sdnum="1033;">
+			<p style="font-style: normal"><font size="5" style="font-size: 18pt">2</font></p>
+		</td>
+		<td width="33%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in" sdval="2" sdnum="1033;">
+			<p style="font-style: normal"><font size="5" style="font-size: 18pt">2</font></p>
+		</td>
+	</tr>
+	<tr valign="top">
+		<td width="33%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in">
+			<p style="font-style: normal"><font size="5" style="font-size: 18pt">Z</font></p>
+		</td>
+		<td width="34%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: none; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0in" sdval="3" sdnum="1033;">
+			<p style="font-style: normal"><font size="5" style="font-size: 18pt">3</font></p>
+		</td>
+		<td width="33%" style="border-top: none; border-bottom: 1px double #808080; border-left: 1px double #808080; border-right: 1px double #808080; padding-top: 0in; padding-bottom: 0.04in; padding-left: 0.04in; padding-right: 0.04in" sdval="3" sdnum="1033;">
+			<p style="font-style: normal"><font size="5" style="font-size: 18pt">3</font></p>
+		</td>
+	</tr>
+</table>
+<p style="margin-bottom: 0in; font-style: normal"><br/>
+
+</p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>B.4
+Predictability validity criterion</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Assume
+A, the prediction error, has been designated as 25%. Further assume
+that a complexity metric is used during development at time T1 to
+predict the reliability of a software component during operation to
+be an MTTF of 1200 hours ( Fp</font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">T2</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+) at time T2. Also assume that the actual MTTF during operation is
+1000 hours ( Fa</font></font><sub><font face="serif"><font size="4" style="font-size: 15pt">T2</font></font></sub><font face="serif"><font size="4" style="font-size: 15pt">
+). Then the error in prediction is 200 hours, or 20%. Conclude that
+the prediction accuracy is acceptable. If the ability to predict is
+demonstrated over a representative sample of software components,
+conclude that the metric can be used as a predictor of reliability.
+For example, during development predictions identify those software
+components that need to be improved.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>B.5
+Discriminative power validity criterion</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Assume
+that the confidence level a has been designated as 0.05. Further
+assume that all software components with a complexity metric value
+greater than 10 (critical value) have an MTTF less than 1000 hours
+(low reliability) and all components with a complexity metric value
+less than or equal to 10 have an MTTF greater than or equal to 1000
+hours (high reliability). Form a two-dimensional contingency table
+with one dimension dividing quality according to the above MTTF
+classification and the other dimension dividing the metrics between
+less than or equal to 10 and greater than 10. Compute the chi-square
+statistic. Assume its value is 5. This value exceeds the chi-square
+statistic of 3.84 at a = 0.05. Therefore conclude that the metric
+discriminates quality between low and high reliability. If the
+ability to discriminate is demonstrated over a representative sample
+of software components, conclude that the metric can discriminate
+between low- and high-reliability components for quality assurance
+and other quality functions.</font></font></p>
+<p style="margin-top: 0.17in; font-style: normal; page-break-after: avoid">
+<font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>B.6
+Reliability validity criterion</b></font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">Assume
+the required success rate (P) for validating a complexity metric
+against the predictability criterion has been established as 80%, and
+there are 100 software components. Then the metric predicts the
+quality factor with the required accuracy for at least 80 of the
+components.</font></font></p>
+<p style="margin-bottom: 0in; font-style: normal"><br/>
+
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><font face="serif"><font size="4" style="font-size: 15pt">====================================================================</font></font></p>
+<h2 class="western" style="font-style: normal"><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">Defect
+Density Fundamentals</font></font></h2>
+<p><strong><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">DEFINITION</font></font></strong></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">Defect
+Density is the number of confirmed defects detected in
+software/component during a defined period of development/operation
+divided by the size of the software/component.</font></font></p>
+<p><strong><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">ELABORATION</font></font></strong></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">The
+‘defects’ are:</font></font></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">confirmed
+	and agreed upon (not just reported). </font></font>
+	</p>
+	<li/>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">Dropped
+	defects are not counted. </font></font>
+	</p>
+</ul>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">The
+period might be for one of the following:</font></font></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">for
+	a duration (say, the first month, the quarter, or the year). </font></font>
+	</p>
+	<li/>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">for
+	each phase of the software life cycle. </font></font>
+	</p>
+	<li/>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">for
+	the whole of the software life cycle. </font></font>
+	</p>
+</ul>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">The
+size is measured in one of the following:</font></font></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">Function
+	Points (FP) </font></font>
+	</p>
+	<li/>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">Source
+	Lines of Code </font></font>
+	</p>
+</ul>
+<p><strong><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt"><br/>
+DEFECT
+DENSITY FORMULA</font></font></strong></p>
+<p><strong><img src="VUM_sw_metrics_Part2_html_a873f35b4a24380d.jpg" name="Image2" alt="defect density image" align="bottom" width="438" height="100" border="0"/>
+</strong></p>
+<p><strong><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">USES</font></font></strong></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">For
+	comparing the relative number of defects in various software
+	components so that high-risk components can be identified and
+	resources focused towards them. </font></font>
+	</p>
+	<li/>
+<p style="border-top: none; border-bottom: 1.00pt double #000000; border-left: none; border-right: none; padding-top: 0in; padding-bottom: 0.03in; padding-left: 0in; padding-right: 0in">
+	<font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">For
+	comparing software/products so that quality of each software/product
+	can be quantified and resources focused towards those with low
+	quality. </font></font>
+	</p>
+</ul>
+<p style="margin-top: 0.17in; page-break-after: avoid"><font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>Defect
+Removal Efficiency</b></font></font></p>
+<p style="font-style: normal"><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt"><b>Definition</b>
+: The defect removal efficiency (DRE) gives a measure of the
+development team ability to remove defects prior to release. It is
+calculated as a ratio of defects resolved to total number of defects
+found. It is typically measured prior and at the moment of release.</font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt"><b>Calculation</b></font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">To
+be able to calculate that metric, it is important that in your defect
+tracking system you track:</font></font></p>
+<ul>
+	<li/>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt"><b>affected
+	version</b>, version of software in which this defect was found.</font></font></p>
+	<li/>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt"><b>release
+	date</b>, date when version was released</font></font></p>
+</ul>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt"><span style="background: #ffff00">DRE
+= Number of defects resolved by the development team / total number
+of defects at the moment of measurement.</span> </font></font>
+</p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">DRE
+is typically measured at the moment of version release, the best
+visualization is just to show current value of DRE as a number.</font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 16pt"><b>Example</b></font></font></p>
+<p style="border-top: none; border-bottom: 1.00pt double #000000; border-left: none; border-right: none; padding-top: 0in; padding-bottom: 0.03in; padding-left: 0in; padding-right: 0in">
+<font face="Arial, sans-serif"><font size="4" style="font-size: 16pt">For
+example, suppose that 100 defects were found during QA/testing stage
+and 84 defects were resolved by the development team at the moment of
+measurement. The DRE would be calculated as 84 divided by 100 = 84%</font></font></p>
+<p style="margin-top: 0.17in; page-break-after: avoid"><font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>Test
+coverage</b></font></font></p>
+<p style="border-top: none; border-bottom: 1.00pt double #000000; border-left: none; border-right: none; padding-top: 0in; padding-bottom: 0.03in; padding-left: 0in; padding-right: 0in">
+<font size="4" style="font-size: 16pt"><font face="Arial, sans-serif">Test
+coverage measures the amount of testing performed by a set of test.
+Wherever we can count things and can tell whether or not each of
+those things has been tested by some test, then we can measure
+coverage and is known as test coverage. </font></font>
+</p>
+<p style="border-top: none; border-bottom: 1.00pt double #000000; border-left: none; border-right: none; padding-top: 0in; padding-bottom: 0.03in; padding-left: 0in; padding-right: 0in"><a name="aswift_0_expand"></a><a name="aswift_0_anchor"></a>
+<font size="4" style="font-size: 16pt">The basic coverage measure is
+where the ‘coverage item’ is whatever we have been able to count
+and see whether a test has exercised or used this item.</font></p>
+<p><a href="http://istqbexamcertification.com/wp-content/uploads/2012/01/test-coverage-formula.jpg">
+  <font color="#000080">
+    <img src="VUM_sw_metrics_Part2_html_4d4a9ac1ef876386.jpg" name="Image9" alt="test coverage formula" align="bottom" width="461" height="69" border="1"/>
+  </font>
+</a>
+</p>
+<p><font size="4" style="font-size: 16pt">There is danger in using a
+coverage measure. But, 100% coverage does </font><em><font size="4" style="font-size: 16pt">not
+</font></em><font size="4" style="font-size: 16pt">mean 100% tested.
+Coverage techniques measure only one dimension of a multi-dimensional
+concept. Two different test cases may achieve exactly the same
+coverage but the input data of one may find an error that the input
+data of the other doesn’t.</font></p>
+<p><strong><font size="4" style="font-size: 16pt">Benefit of code
+coverage measurement:</font></strong></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0in"><font size="4" style="font-size: 16pt">It
+	creates additional test cases to increase coverage </font>
+	</p>
+	<li/>
+<p style="margin-bottom: 0in"><font size="4" style="font-size: 16pt">It
+	helps in finding areas of a program not exercised by a set of test
+	cases </font>
+	</p>
+	<li/>
+<p><font size="4" style="font-size: 16pt">It helps in
+	determining a quantitative measure of code coverage, which
+	indirectly measure the quality of the application or product. </font>
+	</p>
+</ul>
+<p><strong><font size="4" style="font-size: 16pt">Drawback of code
+coverage measurement:</font></strong></p>
+<ul>
+	<li/>
+<p style="margin-bottom: 0in"><font size="4" style="font-size: 16pt">One
+	drawback of code coverage measurement is that it measures coverage
+	of what has been written, i.e. the code itself; it cannot say
+	anything about the software that has </font><em><font size="4" style="font-size: 16pt">not
+	</font></em><font size="4" style="font-size: 16pt">been written. </font>
+	</p>
+	<li/>
+<p><font size="4" style="font-size: 16pt">If a specified
+	function has not been implemented or a function was omitted from the
+	specification, then structure-based techniques cannot say anything
+	about them it only looks at a structure which is already there. </font>
+	</p>
+</ul>
+<p style="margin-top: 0.17in; page-break-after: avoid"><font face="Albany, sans-serif"><font size="4" style="font-size: 16pt"><b>Failure
+Rate</b></font></font></p>
+<p style="border-top: none; border-bottom: 1.00pt double #000000; border-left: none; border-right: none; padding-top: 0in; padding-bottom: 0.03in; padding-left: 0in; padding-right: 0in">
+<font face="Arial, sans-serif"><font size="4" style="font-size: 16pt"><b>Failure
+rate</b> is the <a href="https://en.wikipedia.org/wiki/Frequency">frequency</a>
+with which an <a href="https://en.wikipedia.org/wiki/Systems_engineering">engineered
+system</a> or component fails, expressed in failures per unit of
+time. It is often denoted by the <a href="https://en.wikipedia.org/wiki/Greek_alphabet">Greek
+letter</a> <a href="https://en.wikipedia.org/wiki/%CE%9B">λ</a>
+(lambda) and is highly used in <a href="https://en.wikipedia.org/wiki/Reliability_engineering">reliability
+engineering</a>.</font></font></p>
+<p><font size="4" style="font-size: 16pt">The failure rate of a
+system usually depends on time, with the rate varying over the life
+cycle of the system. For example, an automobile's failure rate in its
+fifth year of service may be many times greater than its failure rate
+during its first year of service. One does not expect to replace an
+exhaust pipe, overhaul the brakes, or have major <a href="https://en.wikipedia.org/wiki/Transmission_%28mechanics%29">transmission</a>
+problems in a new vehicle.</font></p>
+<p><font size="4" style="font-size: 16pt">In practice, the <a href="https://en.wikipedia.org/wiki/Mean_time_between_failures">mean
+time between failures</a> (MTBF, 1/λ) is often reported instead of
+the failure rate. This is valid and useful if the failure rate may be
+assumed constant – often used for complex units / systems,
+electronics – and is a general agreement in some reliability
+standards (Military and Aerospace). It does in this case </font><font size="4" style="font-size: 16pt"><i>only</i></font><font size="4" style="font-size: 16pt">
+relate to the flat region of the <a href="https://en.wikipedia.org/wiki/Bathtub_curve">bathtub
+curve</a>, also called the &quot;useful life period&quot;. Because of
+this, it is incorrect to extrapolate MTBF to give an estimate of the
+service life time of a component, which will typically be much less
+than suggested by the MTBF due to the much higher failure rates in
+the &quot;end-of-life wearout&quot; part of the &quot;bathtub curve&quot;.</font></p>
+<p><font size="4" style="font-size: 16pt">The reason for the
+preferred use for MTBF numbers is that the use of large positive
+numbers (such as 2000 hours) is more intuitive and easier to remember
+than very small numbers (such as 0.0005 per hour).</font></p>
+<p><font size="4" style="font-size: 16pt">The MTBF is an important
+system parameter in systems where failure rate needs to be managed,
+in particular for safety systems. The MTBF appears frequently in the
+<a href="https://en.wikipedia.org/wiki/Engineering">engineering</a>
+design requirements, and governs frequency of required system
+maintenance and inspections. In special processes called <a href="https://en.wikipedia.org/wiki/Renewal_process">renewal
+processes</a>, where the time to recover from failure can be
+neglected and the likelihood of failure remains constant with respect
+to time, the failure rate is simply the multiplicative inverse of the
+MTBF (1/λ).</font></p>
+<p><font size="4" style="font-size: 16pt">A similar ratio used in the
+<a href="https://en.wikipedia.org/wiki/Transport_industry">transport
+industries</a>, especially in <a href="https://en.wikipedia.org/wiki/Railway">railways</a>
+and <a href="https://en.wikipedia.org/wiki/Truck_driver">trucking</a>
+is &quot;mean distance between failures&quot;, a variation which
+attempts to <a href="https://en.wikipedia.org/wiki/Correlation">correlate</a>
+actual loaded distances to similar reliability needs and practices.</font></p>
+<p><font size="4" style="font-size: 16pt">Failure rates are important
+factors in the insurance, finance, commerce and regulatory industries
+and fundamental to the design of safe systems in a wide variety of
+applications.</font></p>
+<p style="border-top: none; border-bottom: 1.00pt double #000000; border-left: none; border-right: none; padding-top: 0in; padding-bottom: 0.03in; padding-left: 0in; padding-right: 0in">
+<br/>
+<br/>
+
+</p>
+<table cellpadding="0" cellspacing="0">
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt"><b>Failure Rates, MTBFs,
+			and All That</b></font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">Suppose we're given a
+			batch of 1000 widgets, and each functioning widget has a
+			probability of 0.1 of failing on any given day, regardless of how
+			many days it has already been functioning. This suggests that
+			about 100 widgets are likely to fail on the first day, leaving us
+			with 900 functioning widgets. On the second day we would again
+			expect to lose about 0.1 of our functioning widgets, which
+			represents 90 widgets, leaving us with 810. On the third day we
+			would expect about 81 widgets to fail, and so on. Clearly this is
+			an exponential decay, where each day we lose 0.1 of the remaining
+			functional units.&nbsp; In a situation like this we can say that
+			widgets have a constant failure rate (in this case, 0.1), which
+			results in an exponential failure distribution. The &quot;density
+			function&quot; for a continuous exponential distribution has the
+			form</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p align="center"><sub><img src="VUM_sw_metrics_Part2_html_5e31b36c272c1972.gif" name="Image10" align="bottom" width="387" height="27" border="0"/>
+</sub></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">where <font face="Symbol">l</font>
+			is the rate. For example, the density function for our widgets is
+			(0.1)exp(-t/10), which is plotted below:</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p align="center"><img src="VUM_sw_metrics_Part2_html_d2f04ef62c4d3f8b.gif" name="Image11" align="bottom" width="305" height="206" border="0"/>
+</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">Notice that by assuming
+			the probability of failure for a functioning widget on any given
+			day is independent of how long it has already been functioning we
+			are assuming that widgets don't &quot;wear-out&quot; (nor do they
+			improve) over time. This characteristic is sometimes called &quot;lack
+			of memory&quot;, and it's fairly accurate for many kinds of
+			electronic devices with essentially random failure modes. However,
+			in each application it's important to evaluate whether the devices
+			in question really do have constant failure rates. If they don't,
+			then use of the exponential distribution may be misleading.</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">Assuming our widgets
+			have an exponential failure density as defined by (1), the
+			probability that a given widget will fail between t = t<sub>0</sub>
+			and t = t<sub>1</sub> is just the integral of f(t) over that
+			interval. Thus, we have</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p align="center"><sub><img src="VUM_sw_metrics_Part2_html_811ecaf68ffa09dc.gif" name="Image12" align="bottom" width="227" height="27" border="0"/>
+</sub></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">Of course, if t<sub>0</sub>
+			equals 0 the first term is simply 1, and we have the cumulative
+			failure distribution</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p align="center"><sub><img src="VUM_sw_metrics_Part2_html_8ff65bc765ca105.gif" name="Image13" align="bottom" width="409" height="27" border="0"/>
+</sub></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">which is the probability
+			that a functioning widget will fail at any time during the next t
+			units of time. By the way, for <i>any</i> failure distribution
+			(not just the exponential distribution), the &quot;rate&quot; at
+			any time t is defined as</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p align="center"><sub><img src="VUM_sw_metrics_Part2_html_a1b4af56820b7222.gif" name="Image14" align="bottom" width="453" height="49" border="0"/>
+</sub></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">In other words, the
+			&quot;failure rate&quot; is defined as the rate of change of the
+			cumulative failure probability divided by the probability that the
+			unit will not already be failed at time t. Notice that for the
+			exponential distribution we have</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p align="center"><sub><img src="VUM_sw_metrics_Part2_html_4fad132e91e90d8.gif" name="Image15" align="bottom" width="287" height="27" border="0"/>
+</sub></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">so the rate is simply
+			the constant <font face="Symbol">l</font>. It might also be worth
+			mentioning that the function e<sup>x</sup> has the power series
+			representation</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p align="center"><sub><img src="VUM_sw_metrics_Part2_html_ab259c5dfc270869.gif" name="Image16" align="bottom" width="168" height="41" border="0"/>
+</sub></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">so if the product <font face="Symbol">l</font>t
+			is much smaller than 1 we have approximately e<sup>x</sup> ≈ 1 +
+			x, which when substituted into (2) gives a rough approximation for
+			the cumulative failure probability F(t) ≈ <font face="Symbol">l</font>t.</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">Now, we might ask what
+			is the <i>mean time</i> to fail for a device with an arbitrary
+			failure density f(t)? We just need to take the weighted average of
+			all time values from zero to infinity, weighted according to the
+			density. Thus the mean time to fail is</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p align="center"><sub><img src="VUM_sw_metrics_Part2_html_aa5cf33a3d78ffc7.gif" name="Image17" align="bottom" width="464" height="69" border="0"/>
+</sub></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">Of course, the
+			denominator will ordinarily be 1, because the device has a
+			cumulative probability of 1 of failing some time from 0 to
+			infinity. Thus it is a characteristic of probability density
+			functions that the integrals from 0 to infinity are 1. As a
+			result, the mean time to fail can usually be expressed as</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p align="center"><sub><img src="VUM_sw_metrics_Part2_html_43a6bfd8daeb0042.gif" name="Image18" align="bottom" width="461" height="35" border="0"/>
+</sub></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">If we substitute the
+			exponential density f(t) = <font face="Symbol">l</font>e<sup><font face="Symbol">-l</font></sup><sup>t</sup>
+			into this equation and evaluate the integral, we get&nbsp; MTTF&nbsp;
+			=&nbsp; 1/<font face="Symbol">l</font>. Thus the mean time to fail
+			for an exponential system is the inverse of the rate.</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">Now let's try something
+			a little more interesting. Suppose we manufacture a batch of
+			dual-redundant widgets, hoping to improve their reliability in
+			service. A dual-widget is said to be failed only when <i>both</i>
+			sub-widgets have failed. What is the failure density for a
+			dual-widget?&nbsp; This can be derived in several different ways,
+			but one simple way is to realize that the probability of both
+			sub-widgets being failed by time t is</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><br/>
+
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p align="center"><sub><img src="VUM_sw_metrics_Part2_html_726b82bfebdc4608.gif" name="Image19" align="bottom" width="422" height="45" border="0"/>
+</sub></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">so this is the
+			cumulative failure distribution F(t) for dual-widgets. From this
+			we can immediately infer the density distribution f(t), which is
+			simply the derivative of F(t) (recalling that F(t) is the integral
+			of f(t)), so we have</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p align="center"><sub><img src="VUM_sw_metrics_Part2_html_5cfcc8f65c7ca6ec.gif" name="Image20" align="bottom" width="298" height="50" border="0"/>
+</sub></p>
+		</td>
+	</tr>
+	<tr>
+		<td >
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td >
+			<p><font size="4" style="font-size: 16pt">Notice that this is <i>not</i>
+			a pure exponential distribution anymore (unlike the distribution
+			for failures of a single widget). A plot of this density is shown
+			below:</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td >
+			<p align="center"><img src="VUM_sw_metrics_Part2_html_6ca0fba6c137de1d.gif" name="Image21" align="bottom" width="324" height="196" border="0"/>
+</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td >
+			<p><font size="4" style="font-size: 16pt">Remember that the
+			failure density for the simplex widgets is a maximum at t = 0,
+			whereas it is <i>zero</i> for a dual-widget. It then rises to a
+			maximum and falls off. What is the mean time for a dual-widget to
+			fail? As always, we get that by evaluating equation (5) above, but
+			now we use our new dual-widget density function. Evaluating the
+			integral gives MTTF = (3/2)(1/<font face="Symbol">l</font>).</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td >
+			<p><br/>
+
+			</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">It sometimes strikes
+			people as counter-intuitive that the early failure probability of
+			a dual-redundant system is so low, and yet the MTTF is only
+			increased by a factor of 3/2, but it's obvious from the plot of
+			the dual-widget density f(t) that although it does extremely well
+			for the early time period, it eventually rises above the simplex
+			widget density. This stands to reason, because we're very unlikely
+			to have them <i>both</i> components of a dual-widget fail at an
+			early point, but on the other hand they each component still has
+			an individual MTTF of 1/<font face="Symbol">l</font>, so they it
+			isn't likely that <i>either</i> of them will survive far past
+			their mean life.</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">By the way, by this same
+			approach we can determine that a triplex-widget would have a mean
+			time to failure of (11/6)(1/<font face="Symbol">l</font>), and a
+			quad-widget would have an MTTF of (25/12)(1/<font face="Symbol">l</font>).
+			The leading factors are just the partial sums of the harmonic
+			series, i.e.,</font></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p align="center"><sub><img src="VUM_sw_metrics_Part2_html_16b2720ac1a90002.gif" name="Image22" align="bottom" width="285" height="115" border="0"/>
+</sub></p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p>&nbsp;</p>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<p><font size="4" style="font-size: 16pt">and so on.</font></p>
+		</td>
+	</tr>
+</table>
+<p style="border-top: none; border-bottom: 1.00pt double #000000; border-left: none; border-right: none; padding-top: 0in; padding-bottom: 0.03in; padding-left: 0in; padding-right: 0in">
+<br/>
+<br/>
+
+</p>
+<p style="margin-bottom: 0in; font-style: normal"><a href="Metric examples.pdf" name="Metric examples" align="left">
+Metric examples.pdf
+  <br clear="left"/>
+
+
+
+</body>
+</html>

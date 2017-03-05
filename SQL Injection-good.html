@@ -1,0 +1,25 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ <title>SQL Injection</title>
+</head>
+<body>
+ <h2>SQL Injection- How to avoid</h2>
+ 
+ <p>The value of "title" parameter in query string is "' OR 'a'='a" <br><br>
+ <code>
+ Code:<br>
+ qry = "SELECT * FROM books_book WHERE title=%s"<br>
+ book = Book.objects.raw(qry, [title])<br><br>
+ </code>
+Now %s will automatically escape
+</p>
+<hr>
+<b>Book</b>
+
+ 
+ 
+<p><a href="http://127.0.0.1:8000/?title=%27%20OR%20%27a%27=%27a">Click here to see how  SQL Injection works</a></p>
+<p><a href="SQL Injection.html">Click here to see how  SQL Injection works HTML file</a></p>
+
+
+</body></html>
