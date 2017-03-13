@@ -1,0 +1,739 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+	<title></title>
+	<meta name="generator" content="LibreOffice 5.2.2.2 (Linux)"/>
+	<meta name="author" content="Dani "/>
+	<meta name="created" content="2017-03-12T13:21:07.542554263"/>
+	<meta name="changedby" content="Dani "/>
+	<meta name="changed" content="2017-03-12T22:21:04.168994514"/>
+	<style type="text/css">
+		h3.cjk { font-family: "Noto Sans CJK SC Regular" }
+		h3.ctl { font-family: "FreeSans" }
+	</style>
+</head>
+<body lang="en-US" dir="ltr">
+<h1>8.4  REQUIREMENTS ANALYSIS AND SPECIFICATION SIZE</h1>
+<p><font size="4" style="font-size: 14pt">Tools for requirements
+management store and manage information about requirements. They
+allow testers to prioritize requirements and to follow their
+implementation status.</font></p>
+<p><font size="4" style="font-size: 14pt">In a narrow sense, they are
+not testing tools, but they are very useful for defining a test based
+on requirements (see section 3.7.1) and for planning the test; for
+example, the test could be oriented on the implementation status of a
+requirement. For this purpose, <u>requirements management tools</u>
+are usually able to <b>exchange information</b> with <b>test
+management tools.</b></font></p>
+<p><font size="4" style="font-size: 14pt">Thus, it is possible to
+<u>seamlessly interconnect requirements, tests, and test results.</u>
+For every requirement the corresponding tests can be found and vice
+versa. The tools also help to find inconsistencies or holes in the
+requirements, and they can identify requirements without test cases;
+that is, requirements that otherwise might go untested.</font></p>
+<p><font size="4" style="font-size: 14pt">Requirements and
+specification documents generally combine text, graphs, and special
+mathematical diagrams and symbols. The nature of the presentation
+depends on the particular style, method, or notation used. When
+measuring code or design size, you can identify atomic entities to
+count (lines, statements, bytes, classes, and methods, for example).</font></p>
+<p><font size="4" style="font-size: 14pt">However, a requirements or
+specification document can consist of a mixture of text and diagrams.
+For example, a use case analysis may consist of a UML use case
+diagram along with a set of use case scenarios that may be expressed
+as either text or as UML activity diagrams. Because a requirements
+analysis often consists of a mix of document types, it is difficult
+to generate a single size measure.</font></p>
+<p><font size="4" style="font-size: 14pt">EXAMPLE 8.10</font></p>
+<p><font size="4" style="font-size: 14pt">There are obvious atomic
+elements in a variety of requirements and specification model types
+that can be counted:</font></p>
+<p><font size="4" style="font-size: 14pt">i. <b>Use case diagrams</b>:
+Number of use cases, actors, and relationships of various types</font></p>
+<p><font size="4" style="font-size: 14pt">ii. <b>Use case</b>: Number
+of scenarios, size of scenarios in terms of steps, or activity
+diagram model elements</font></p>
+<p><font size="4" style="font-size: 14pt">iii. <b>Domain model
+(expressed as a UML class diagram)</b>: Number of classes, abstract
+classes, interfaces, roles, operations, and attributes</font></p>
+<p><font size="4" style="font-size: 14pt">iv. <b>UML OCL
+specifications</b>: Number of OCL expressions, OCL clauses</font></p>
+<p><font size="4" style="font-size: 14pt">v. <b>Alloy models</b>:
+Number of alloy statements—signatures, facts, predicates,
+functions, and assertions (Jackson 2002)</font></p>
+<p><font size="4" style="font-size: 14pt">vi. <b>Data-flow diagrams
+used in structured analysis and design</b>: Processes (bubbles
+nodes), external entities (box nodes), data-stores (line nodes) and
+data-flows (arcs)</font></p>
+<p><font size="4" style="font-size: 14pt">vii. <b>Algebraic
+specifications</b>: Sorts, functions, operations, and axioms</font></p>
+<p><font size="4" style="font-size: 14pt">viii. <b>Z specifications</b>:
+The various lines appearing in the specification, which form part of
+either a type declaration or a (non-conjunctive) predicate (Spivey
+1993)</font></p>
+<p><font size="4" style="font-size: 14pt">We can enforce
+comparability artificially by defining a <b>page as an atomic entity</b>,
+so that both <i>text and diagrams</i> are composed of a number of
+sequential pages. Thus, the <b>number of pages</b> <i>measures length</i>
+for arbitrary types <i>of documentation</i> and is frequently used in
+industry.</font></p>
+<p><br/>
+<br/>
+
+</p>
+<p><font size="4" style="font-size: 14pt">===========================================================================</font></p>
+<p><font color="#800000"><font size="4" style="font-size: 14pt">EXAMPLE
+1</font></font></p>
+<p><font size="4" style="font-size: 14pt">Suppose P is a program
+produced to meet the following specification, S:</font></p>
+<p><font size="4" style="font-size: 14pt">The inputs to the program
+are exam scores expressed as percentages. The outputs are comments,
+generated according to the following rules:</font></p>
+<ul>
+	<li/>
+<p><font size="4" style="font-size: 14pt">For scores under 45,
+	the program outputs “fail”</font></p>
+	<li/>
+<p><font size="4" style="font-size: 14pt">For scores between
+	45 and 80 inclusive, the program outputs “pass”</font></p>
+	<li/>
+<p><font size="4" style="font-size: 14pt">For scores above 80,
+	the program outputs “pass with distinction”</font></p>
+	<li/>
+<p><font size="4" style="font-size: 14pt">Any input other than
+	a numeric value between 0 and 100 should produce the error message
+	“invalid input”</font></p>
+</ul>
+<p><font size="4" style="font-size: 14pt"><u>A set of five test cases
+for P is</u></font></p>
+<ul>
+	<li/>
+<p><font size="4" style="font-size: 14pt">(40, “fail”)</font></p>
+	<li/>
+<p><font size="4" style="font-size: 14pt">(60, “pass”)</font></p>
+	<li/>
+<p><font size="4" style="font-size: 14pt">(90, “pass with
+	distinction”)</font></p>
+	<li/>
+<p><font size="4" style="font-size: 14pt">(110, “invalid
+	input”)</font></p>
+	<li/>
+<p><font size="4" style="font-size: 14pt">(fifty, “invalid
+	input”)</font></p>
+</ul>
+<p><font size="4" style="font-size: 14pt">Suppose that on input “40,”
+program P outputs “fail.” Then we say that P is correct on that
+input. If, for the input “110,” the program P outputs “pass
+with distinction,” then P fails on this input; the correct output
+should have been the error message “invalid input.”</font></p>
+<p><font size="4" style="font-size: 14pt"><i>The objective of a
+software testing strategy is to devise and run a set of test cases
+that satisfy or cover a set of test requirements.</i> The <b>test
+requirements</b> are defined in<b> terms of a software artifact or
+model of a software artifact, where an artifact may be the
+</b><b><span style="background: #ffff00">requirements, specification,
+design, program code</span></b><b>, etc</b>. These models are often
+graphs, for example, flowgraphs.</font></p>
+<p><font size="4" style="font-size: 14pt">One testing strategy is to
+select test cases so that <i>every program statement is executed at
+least once</i>. This approach is called <b>statement &shy;coverage</b>—each
+statement is a test requirement. For deterministic software, each
+test case causes one test path through the program to execute. In
+terms of the program <b>flowgraph</b>, <span style="background: #ffff00">statement
+coverage is achieved by finding a set of test cases that execute test
+paths such that every flowgraph node lies on at least one test path</span>.</font></p>
+<p><font color="#800000"><font size="4" style="font-size: 14pt">EXAMPLE
+2</font></font></p>
+<p><font size="4" style="font-size: 14pt">Drawing 1 contains a
+program written to meet the specification S of Example 1. We can
+achieve 100% statement coverage for this program by choosing just two
+of the test cases: one with input “90,” and one with input “40.”
+</font>
+</p>
+<ul>
+	<li/>
+<p><font size="4" style="font-size: 14pt">For “90,” the
+	program executes the path &lt;ABDEFG&gt;.</font></p>
+	<li/>
+<p><font size="4" style="font-size: 14pt">For “40,” the
+	program executes the path &lt;ABCEG&gt;. </font>
+	</p>
+</ul>
+<p><font size="4" style="font-size: 14pt">Thus, C is covered in the
+second case, and all the other nodes are covered in the first case,
+so we have a complete statement coverage.</font></p>
+<p><font size="4" style="font-size: 14pt">Another testing strategy is
+to select test cases so that every program branch is executed at
+least once. This approach, called branch (or edge) coverage, means
+finding test cases that cause the execution of a set of test paths
+such that every edge lies on at least one test path.</font></p>
+<p><font color="#800000"><font size="4" style="font-size: 14pt">EXAMPLE
+3</font></font></p>
+<p><font color="#800000"><img src="SW_metrics_Chapter3_Software%20Requirements%20Metrics_html_6723e268db906afc.gif" name="Frame1" alt="Frame1" align="bottom"/>
+</font></p>
+<p><font size="4" style="font-size: 14pt">The set of test cases
+selected in Example 2 satisfies branch as well as statement coverage.
+However, this will not always be true. In the same program, the two
+paths ABCEFG and ABDEFG satisfy 100% statement coverage, but fail to
+cover the edge EG.</font></p>
+<p><font size="4" style="font-size: 14pt">The most exhaustive
+structural testing strategy is to select test cases such that every
+possible test path is executed at least once. This approach is called
+complete path coverage. In terms of the program flowgraph, complete
+path coverage requires running every single test path through the
+flowgraph. This strategy, although appealing in theory, is normally
+impossible in practice. If the program has even a single loop, then
+complete path coverage can never be achieved because a loop gives
+rise to an infinite number of test paths.</font></p>
+<p><font size="4" style="font-size: 14pt">There is another
+fundamental impediment to any structural testing strategy:<span style="background: #ffff00">
+</span><b><span style="background: #ffff00">infeasible paths</span></b>.
+<span style="background: #ffff00">An infeasible path is a program
+path that cannot be executed for any input</span>. In practice,
+infeasible paths can appear even in the simplest of programs.</font></p>
+<p><font size="4" style="font-size: 14pt">EXAMPLE 9.20</font></p>
+<p><font size="4" style="font-size: 14pt">In the program of Drawing
+2, the path ABCEFG is infeasible. To see why, notice that node C is
+executed only when the score is less than 45, while node F is
+executed only when the score is more than 80. Thus, no input score
+can cause the program to execute both nodes C and F. The existence of
+infeasible paths can mean that, in practice, we may not be able to
+achieve 100% coverage for any structural testing strategy (even
+statement coverage).</font></p>
+<p><font size="4" style="font-size: 14pt">Numerous other structural
+testing strategies have been proposed. In particular, researchers
+have tried to define strategies so that </font>
+</p>
+<p><font size="4" style="font-size: 14pt">1. They are more
+comprehensive than statement and branch coverage (in the sense of
+requiring more test cases).</font></p>
+<p><font size="4" style="font-size: 14pt">2. The number of test cases
+required is finite even when there are loops.</font></p>
+<p><font size="4" style="font-size: 14pt">Several of these strategies
+make use of the notion of <span style="background: #ffff00">simple
+paths</span> and prime paths. They define a <span style="background: #ffff00">simple
+path</span> as a <u>path that does not contain the same node more
+than once except for the first and last node</u>. A <span style="background: #ffff00">prime
+path</span> is a <span style="font-style: normal"><u>s</u></span><u>imple
+path that “does not appear as a proper subpath of any other simple
+path</u>.”</font></p>
+<p><font size="4" style="font-size: 14pt"><b>Examples</b>:</font></p>
+<p>• <font size="4" style="font-size: 14pt"><font color="#800000">Edge-pair
+coverage</font>: Testing “each reachable path of length up to 2”
+in the flowgraph.</font></p>
+<p>• <font size="4" style="font-size: 14pt"><font color="#800000">Simple-round-trip
+coverage</font>: Testing “at least one round-trip path for each
+reachable node in” the flowgraph “that begins and ends a
+round-trip path,” where a round-trip path is a prime path that
+starts and ends at the same node. This requires every cycle through a
+loop to be tested, but does require branch coverage or all cycles
+through loops that contain decisions.</font></p>
+<p>• <font size="4" style="font-size: 14pt"><font color="#800000">Prime
+path coverage</font>: Testing all prime paths in the flowgraph. This
+requires testing all cycles that start at reachable nodes, and,
+depending on the branches inside a loop, requires testing execution
+paths that cause a loop to cycle two or more times. Prime path
+coverage satisfies branch coverage, and requires a finite number of
+tests.</font></p>
+<p><font size="4" style="font-size: 14pt">We have already noted one
+problem with structural testing strategies (namely, <i>infeasible
+paths</i>). In practice, there are two further important obstacles:</font></p>
+<p><font size="4" style="font-size: 14pt">1. No structural strategy
+on its own (even 100% complete path coverage when feasible) can
+guarantee adequate software testing. Consider, for example, the
+program in Illustration 1, which implements the specification in
+Example 1. The path ABDEFG correctly outputs “distinction” when
+the input is “90.” However, the correct output for one execution
+does not mean that every execution of the path ABDEFG is correct. For
+instance, the input score “110” also executes the path ABDEFG,
+but the program wrongly outputs “pass with distinction” when it
+should be producing “invalid input.”</font></p>
+<p><font size="4" style="font-size: 14pt">2. Knowing the set of paths
+that satisfies a particular strategy does not tell you how to create
+test cases to match the paths. This problem is undecidable in
+general—no automated method is guaranteed to either find the
+appropriate test cases or determine that such data does not exist;
+however, some commercial testing tools provide assistance.</font></p>
+<p style="margin-top: 0.17in; page-break-after: avoid"><font color="#800000"><font face="Albany, sans-serif"><font size="4" style="font-size: 14pt"><b>2
+Test Effectiveness Ratio</b></font></font></font></p>
+<p><font size="4" style="font-size: 14pt">For a given program and a
+set of cases to test it, we would like to know the extent to which
+the test cases satisfy a particular testing strategy.</font></p>
+<p><font size="4" style="font-size: 14pt">EXAMPLE 2.1</font></p>
+<p><font size="4" style="font-size: 14pt">Suppose we are testing the
+program in Illustration 1, and we have run two test cases with input
+scores “60” and “90.” The test cases traverse two paths,
+ABDEG and ABDEFG, covering 6 of the 7 statements, 7 of the 9 edges,
+and 2 of the 4 paths in the program. Thus, we say that statement
+coverage is 86%, branch coverage is 78%, and path coverage is 50%.</font></p>
+<p><font size="4" style="font-size: 14pt">We can define these
+percentages formally. Let C be a <b>testing criterion</b> that
+requires us to cover a class of test requirements (such as paths,
+simple paths, linearly independent paths, LCSAJs, edges, or
+statements). For a given program and set of test cases, the <b>test
+effectiveness ratio</b> (TER<sub>C </sub>) is defined as</font></p>
+<p><font size="4" style="font-size: 14pt">	<b>TER</b><sub><b>C</b></sub><b>
+= (Number of C requirements executed at least once) / (Total number
+of t est requirements for criterion C)</b></font></p>
+<h1><a name="firstHeading"></a><font color="#800000"><b>Change
+request</b></font></h1>
+<p><font color="#800000"><font size="4" style="font-size: 14pt"><b><span style="background: #ffff00">A
+change request is a document containing a call for an adjustment of a
+system; it is of great importance in the <a href="https://en.wikipedia.org/wiki/Change_management_process">change
+management process</a>.</span></b></font></font></p>
+<p style="margin-bottom: 0in"><span id="Frame2" dir="ltr" style="float: right; width: 3.67in; height: 2.92in; border: 1px solid #000080; padding: 0in; background: #ffffff">
+	<p style="margin-top: 0.08in; margin-bottom: 0.08in"><a href="https://en.wikipedia.org/wiki/File:Example_change_request.png">
+  <img src="SW_metrics_Chapter3_Software%20Requirements%20Metrics_html_441933d344069d71.png" name="Image2" alt="Figure 1: Example change request for the car industry" align="bottom" width="100%" border="0"/>
+</a>
+<font size="3" style="font-size: 12pt"><i><br/>
+Illustration
+	1: Change request</i></font></p>
+</span><br/>
+
+</p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">A
+change request is declarative, i.e. it states what needs to be
+accomplished, but leaves out how the change should be carried out.
+Important elements of a change request are an ID, the customer (ID),
+the deadline (if applicable), an indication whether the change is
+required or optional, the change type (often chosen from a
+domain-specific ontology) and a change abstract, which is a piece of
+narrative. An example of a change request can be found in
+</font></font><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Illustration</font></font><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">
+1 on the right.</font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Change
+requests typically originate from one of five sources:</font></font></p>
+<ol>
+	<li/>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">problem
+	reports that identify bugs that must be fixed, which forms the most
+	common source </font></font>
+	</p>
+	<li/>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">system
+	enhancement requests from users </font></font>
+	</p>
+	<li/>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">events
+	in the development of other systems </font></font>
+	</p>
+	<li/>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">changes
+	in underlying structure and or standards (e.g. in software
+	development this could be a new operating system) </font></font>
+	</p>
+	<li/>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">demands
+	from senior management </font></font>
+	</p>
+</ol>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Additionally,
+in Project Management, change requests may also originate from an
+unclear understanding of the goals and the objectives of the project.</font></font></p>
+<p><img src="SW_metrics_Chapter3_Software%20Requirements%20Metrics_html_cfc7e04a94224c40.png" name="Image3" alt="Figure 1: Process-data model for the change management process" align="bottom" width="800" height="1037" border="0"/>
+</p>
+<p style="margin-top: 0.17in; page-break-after: avoid"><font color="#800000"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>Change
+Request metrics</b></font></font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>Use
+Change Request metrics to monitor and control the rate of change to
+application software.</b></font></font></p>
+<p style="margin-bottom: 0in"><strong><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">Method</span></font></font></strong></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Prepare
+a management summary of the Change Requests, (CRs) which have been
+raised and/or processed, using a graphical means to present the
+information, where appropriate. The monthly and quarterly reports
+identified below are representative of those that can be prepared.</font></font></p>
+<p style="margin-bottom: 0in"><strong><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">Monthly</span></font></font></strong></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">The
+following reports are generally appropriate for monthly assessment of
+the maintenance process.</font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>Change
+Request Status Report</b></font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Identify
+the number of CRs compared to previous time periods:</font></font></p>
+<p style="margin-left: 2in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">·
+by sub-category,</span></font></font></p>
+<p style="margin-left: 2in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">·</span>
+<span lang="en-US">by logged status.</span></font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>Outstanding
+Backlog</b></font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Identify
+the estimated effort outstanding (this represents work backlog)
+compared to previous time periods for pending and in-progress CRs:</font></font></p>
+<p style="margin-left: 2in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">·</span>&nbsp;<span lang="en-US">CRs
+not started (i.e., statuses = change identified, cost/ramifications
+defined, benefits defined, approved by customer, approved by
+company),</span></font></font></p>
+<p style="margin-left: 2in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">·</span>&nbsp;<span lang="en-US">CRs
+in progress (i.e., status release assigned; use the project's time
+reporting system to determine the actual effort spent to date for the
+release compared with total estimated effort of all CRs assigned to
+the release).</span></font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>Effort
+and Cost Expended on Change Requests by System</b></font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Identify
+the number of CRs compared to previous time periods:</font></font></p>
+<p style="margin-left: 2in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">·</span>&nbsp;<span lang="en-US">by
+system,</span></font></font></p>
+<p style="margin-left: 2in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">·
+by total effort logged (use the project's time reporting data for
+actuals).</span></font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">This
+report can also present monetary values instead of effort.</font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">It
+is necessary to allocate costs to each system relative to effort.&nbsp;</span></font></font></p>
+<p style="margin-bottom: 0in"><strong><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">Quarterly
+Reports</span></font></font></strong></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">The
+following reports are generally appropriate for quarterly assessment
+of the maintenance process.&nbsp; </font></font>
+</p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>Change
+Requests Processed by System</b></font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Identify
+the number of CRs compared to previous time periods:</font></font></p>
+<p style="margin-left: 2in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">·</span>&nbsp;<span lang="en-US">by
+system,</span></font></font></p>
+<p style="margin-left: 2in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">·</span>&nbsp;<span lang="en-US">by
+source of change,</span></font></font></p>
+<p style="margin-left: 2in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">·</span>
+<span lang="en-US">by priority.</span></font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">This
+report may indicate which systems need re-engineering.</font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in">&nbsp; 
+</p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>Cost
+Benefit Analysis of Changes</b></font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Identify
+the number of pending CRs:</font></font></p>
+<p style="margin-left: 2in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">·
+by benefit class,</span></font></font></p>
+<p style="margin-left: 2in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">·</span>&nbsp;<span lang="en-US">by
+total benefits and total costs.</span></font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">This
+report also shows backlog but can be used for longer term analysis of
+priorities.</font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>Effort
+and Cost Expended on Change Requests by Stage/Activity</b></font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Identify
+the total effort expended on CRs:</font></font></p>
+<p style="margin-left: 2in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">·</span>
+<span lang="en-US">by stage/activity,</span></font></font></p>
+<p style="margin-left: 2in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span lang="en-US">·
+by application system/sub-system.</span></font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">This
+information is useful in determining where effort is being expended
+on systems development and helps improve estimating.</font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>Delivery
+of Releases On-Time and Late Deliveries</b></font></font></p>
+<p style="margin-left: 1.5in; margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Provide
+a chart showing the number of actual releases over the past year and
+the percentage of releases which were delivered ahead of schedule, on
+schedule, or late.</font></font></p>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>Requirements
+rarely stay unchanged. Change requests come from the </b>clients
+(requesting added functionality, a new report, or a report in a
+different format, for example) or from the developers (infeasibility,
+difficulty in implementing, etc.).</font></font></p>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>Change
+request frequency can be used as a metric to assess the stability of
+the requirements and how many changes in requirements to expect
+during the later stages. </b></font></font>
+</p>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Many
+organizations have formal methods for requesting and incorporating
+changes in requirements. Change data can be easily extracted from
+these formal change approval procedures. The frequency of changes can
+also be plotted against time. For most projects, the frequency
+decreases with time. This is to be expected; most of the changes will
+occur early, when the requirements are being analyzed and understood.
+During the later phases, requests for changes should decrease. </font></font>
+</p>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">For
+a project, if the change requests are not decreasing with time, it
+could mean that the requirements analysis has not been done properly.
+Frequency of change requests can also be used to &quot;freeze&quot;
+the requirements—when the frequency goes below an acceptable
+threshold, the requirements can be considered frozen and the design
+can proceed. The threshold has to be determined based on experience
+and historical data<b>.</b></font></font></p>
+<h3 class="western" style="font-style: normal"><font color="#800000"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>Requirements
+traceability</b></font></font></font></h3>
+<h3 class="western" style="font-weight: normal"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><i>You’re
+responsible for the requirements traceability of your complex
+product. Do any of these scenarios sound familiar? </i></font></font>
+</h3>
+<p><strong><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Scenario
+One</font></font></strong><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">:
+You just heard from marketing that a critical business requirement
+needs to change and be accounted for in the upcoming release. You
+need to know how this change will impact work downstream and how the
+system specification your engineers are working with will change.
+</font></font><em><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Immediately</font></font></em><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">.</font></font></p>
+<p><strong><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Scenario
+Two</font></font></strong><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">:
+Your QA team just found a critical bug in your most anticipated new
+feature and you’re two weeks away from launch. Do you ship with the
+known bug and hope to patch it later, or delay the launch? Will this
+impact your upcoming audit? You need to know who is working on this
+feature, who else needs to be notified and weigh in on the decision,
+and know what other aspects of the product may be impacted.
+</font></font><em><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Immediately</font></font></em><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">.</font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">These
+scenarios, and countless others like them, affect engineering teams
+every day. And as software, embedded systems and external sensors
+contribute to product complexity (not to mention the complications
+that arise when you’re trying to unify multiple teams that
+contribute to a product) there is no chance that manual processes and
+static documentation can scale to support accurate impact analysis
+and quick decision-making. Requirements may be recorded, but if
+they’re not in a </span><i><span style="font-weight: normal">system
+of action</span></i><span style="font-weight: normal">, in situations
+like those above, you cannot effectively manage.</span></font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Gartner
+highlights one of the main reasons companies struggle to achieve the
+benefits of traceability:</font></font></p>
+<p><em>“<font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">The
+most widely adopted tools for requirements continue to be general
+document software such as Microsoft Office or Google Docs (40% to 50%
+of the market) due to cost, availability and familiarity. Yet these
+often lead to poorly managed requirements, thus eliminating and
+exceeding any cost benefit the tools themselves have. Requirements
+end up captured in a variety of documents and spreadsheets
+supplemented by post-it notes in unmanaged versions with no
+traceability or reuse. This creates a more costly user acceptance
+testing cycle, both in the time to execute as well as remediation of
+issues found late in the process, where they are far more costly to
+address.”</font></font></em></p>
+<p>— <strong><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><span style="font-weight: normal">Gartner
+Market Guide for Software Requirements Definition and Management
+Solutions 2014</span></font></font></strong></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Software
+and hardware teams have to work together, in tight collaboration,
+which is difficult when they use different tools, use different
+terminology, and work in different cadences with difference
+methodologies. &nbsp;All details such as marketing requirements,
+functional requirements, test cases and other items that define the
+scope of what you’re building are related in some fashion, either
+directly or indirectly. Best practices for requirements traceability
+in complex products requires methods and tools that connect
+requirements to the upstream and downstream artifacts and testing,
+with verifiable coverage to prove compliance with internal controls
+and external regulations.</font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Your
+organization can adopt these four best practices around modern
+requirements management and requirements traceability to ensure
+product quality, decrease time-to-market and achieve regulatory
+compliance.</font></font></p>
+<h3 class="western"><strong><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Four
+Best Practices for Requirements Traceability</font></font></strong></h3>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>1.
+Connect stakeholders and contributors to the requirements they care
+about to ensure the right people can weigh in on important decisions
+at the right time.</b></font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Traceable
+relationships are as much about connecting the people as they are
+about connecting the requirements themselves. Each requirement in the
+system has members of the team associated with it—analysts,
+architects, development, verification and quality assurance among
+them—and stakeholders and customers who care about its status. With
+connected relationships built into your project you can quickly get
+interested parties involved in decision-making on short notice.</font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>2.
+Automate bi-directional requirements traceability to minimize risk
+and ensure quality.</b></font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Manually
+updating an old-style traceability matrix is not only cumbersome and
+time consuming, it leaves open the risk for human error. In the
+development of safety-critical products like medical devices and
+airplanes, this risk isn’t acceptable. And it’s difficult to
+prove to an auditor that you got it right.</font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Key
+to managing requirements traceability is the ability to view source
+requirements and their related items downstream to lower-level
+requirements and then back to the source, and know the status of
+those items at each step of the product development process. And
+because this data may be stored in multiple systems, it’s key to be
+able to connect tools via open APIs and automatically pull data into
+a single actionable system with visualized coverage of these trace
+relationships.</font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>3.
+Connect data, conversations and decisions in a single system in the
+product development process</b><span style="font-weight: normal">.</span></font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">Being
+able to visualize coverage of trace relationships is imperative. But
+what happens when you find a gap, or a test is failing? The ability
+to confer and collaborate with the people connected to the
+requirement right in the system allows you to capture decisions and
+actions and keep that information associated with the requirement.
+Down the road, if you need to revisit decisions, all data is stored
+and easy to find.</font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">With
+this managers can, for example, verify that their requirements are
+connected to downstream test cases and see what percentage of those
+tests have passed. In a system of action, every test case has a
+comment and activity stream accessible to all users. Testers and
+contributors can capture decisions, answer questions and resolve
+issues transparently and responsively.</font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><b>4.
+Conduct formal reviews in compliance with internal controls or
+industry regulations with built-in reporting.</b></font></font></p>
+<p><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">In
+the case of proving compliance with a set of rules and regulations
+you need to show your requirements, their traceable connections to
+test plans, and verification that all test have passed. Using a
+requirements management tool that has built-in formal reviews and
+reporting for auditors makes this process less cumbersome and more
+reliable.</font></font></p>
+<p style="margin-bottom: 0in"><font face="serif"><font size="5" style="font-size: 18pt"><font color="#800000"><b>Summary</b></font>
+</font></font>
+</p>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">The
+main goal of the requirements phase is to produce the software
+requirements specification (SRS), which accurately captures the
+client's requirements and which forms the basis of software
+development and validation. </font></font>
+</p>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">The
+basic reason for the difficulty in specifying software requirements
+comes from the fact that there are three interested parties—the
+client, the end users, and the software developer. The requirements
+document has to be such that the client and users can understand it
+easily and the developers can use it as a basis for software
+development. Due to the diverse parties involved in software
+requirements specification, a communication gap exists. This makes
+the task of requirements specification difficult. There are three
+basic activities in the requirements phase. The first is problem or
+requirement analysis. The goal of this activity is to understand such
+different aspects as the requirements of the problem, its context,
+and how it fits within the client's organization. The second activity
+is requirements specification, during which the understood problem is
+specified or written, producing the SRS. And the third activity is
+requirements validation, which is done to ensure that the
+requirements specified in the SRS are indeed what is desired. </font></font>
+</p>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">There
+are <u>three main approaches to analysis;</u> <b>unstructured</b>
+approaches rely on interaction between the analyst, customer, and
+user to reveal all the requirements (which are then documented). The
+<i>second</i> is the <b>mod</b><b>eling-</b><b>oriented</b> approach,
+in which a model of the problem is built based on the available
+information. The model is useful in determining if the understanding
+is correct and in ensuring that all the requirements have been
+determined. </font></font>
+</p>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt"><font color="#800000">Modeling</font>
+may be <font color="#800000">function-oriented</font> or
+<font color="#800000">object-oriented</font>. The <i>third</i>
+approach is the <b>prototyping approach</b> in which a prototype is
+built to <i>validate the correctness and completeness of
+requirements</i>. To satisfy its goals, an SRS should possess
+characteristics like completeness, consistency, unambiguous,
+verifiable, modifiable, etc. A good SRS should specify all the
+functions the software needs to support, performance of the system,
+the design constraints that exist, and all the external interfaces. </font></font>
+</p>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">One
+<u>method</u> for <i>specifying the functional specifications</i>
+that has become popular is the <font color="#800000"><b>use case
+approach</b></font>. With this approach the functionality of the
+system is specified through use cases, with each use case specifying
+the behavior of the system when a user interacts with it for
+achieving some goal. Each<font color="#800000"> use case</font>
+contains a <font color="#800000">normal scenario</font>, as well as
+many <font color="#800000">exceptional scenarios</font>, thereby
+providing the complete behavior of the system. Though use cases are
+meant for specification, as they are natural and story-like, by
+expressing them at different levels of abstraction they can also be
+used for problem analysis. </font></font>
+</p>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">For
+<b>va</b><b>li</b><b>dation</b>, the most commonly used method is
+reviewing or inspecting the requirements. In requirements
+inspections, the team of reviewers also includes a representative of
+the client to ensure that all requirements are captured. </font></font>
+</p>
+<p style="margin-bottom: 0in"><font face="Arial, sans-serif"><font size="4" style="font-size: 14pt">The
+main metric of interest for requirements is some quantification of
+system size, as it can be used to estimate the effort requirement of
+the project. <font color="#800000">The most commonly used size metric
+for requirements is the function points</font>. The function point
+metric attempts to quantify the functionality of the system in terms
+of five parameters and their complexity levels which can be
+determined from the requirements of the system. Based on the count of
+these five parameters for different complexity levels, and the value
+of fourteen different environmental factors, the function point count
+for a system is obtained. <font color="#800000">The function point
+metric can be used for estimating the cost of the system</font>. </font></font>
+</p>
+<h3 class="western"><font color="#800000"><font face="Arial, sans-serif"><b>Exercises</b></font></font>
+</h3>
+<p style="margin-bottom: 0in; background: #eeeeee"><font face="serif"><font size="3" style="font-size: 12pt">1.Is
+it possible to have a system that can automatically verify
+completeness of an SRS document? Explain your answer. </font></font>
+</p>
+<p style="margin-bottom: 0in; background: #eeeeee"><font face="serif"><font size="3" style="font-size: 12pt">2.Construct
+an example of an inconsistent (incomplete) SRS. </font></font>
+</p>
+<p style="margin-bottom: 0in; background: #eeeeee"><font face="serif"><font size="3" style="font-size: 12pt">3.How
+can you specify the &quot;maintainability&quot; and &quot;user
+friendliness&quot; of a software system in quantitative terms? </font></font>
+</p>
+<p style="margin-bottom: 0in; background: #eeeeee"><font face="serif"><font size="3" style="font-size: 12pt">4.For
+a complete and unambiguous response time requirement, the
+environmental factors on which the response time depends must be
+specified. Which factors should be considered, and what units should
+be chosen to specify them? </font></font>
+</p>
+<p style="margin-bottom: 0in; background: #eeeeee"><font face="serif"><font size="3" style="font-size: 12pt">5.The
+basic goal of the requirements activity is to get an SRS that has
+some desirable properties. What is the role of modeling in developing
+such an SRS? List three major benefits that modeling provides, along
+with justifications, for achieving the basic goal. </font></font>
+</p>
+<p style="margin-bottom: 0in; background: #eeeeee"><font face="serif"><font size="3" style="font-size: 12pt">6.
+Make a friend of yours as the client. Perform structured analysis and
+object-oriented analysis for the following: </font></font>
+</p>
+<p style="margin-left: 0.79in; margin-bottom: 0in; background: #eeeeee">
+<font face="serif"><font size="3" style="font-size: 12pt">(a) An
+electronic mail system. </font></font>
+</p>
+<p style="margin-left: 0.79in; margin-bottom: 0in; background: #eeeeee">
+<font face="serif"><font size="3" style="font-size: 12pt">(b) A
+simple student registration system. </font></font>
+</p>
+<p style="margin-left: 0.79in; margin-bottom: 0in; background: #eeeeee">
+<font face="serif"><font size="3" style="font-size: 12pt">(c) A
+system to analyze a person's diet. </font></font>
+</p>
+<p style="margin-left: 0.79in; margin-bottom: 0in; background: #eeeeee">
+<font face="serif"><font size="3" style="font-size: 12pt">(d) A
+system to manage recipes for a household. </font></font>
+</p>
+<p style="margin-left: 0.79in; margin-bottom: 0in; background: #eeeeee">
+<font face="serif"><font size="3" style="font-size: 12pt">(e) A
+system to fill tax forms for the current year tax laws. </font></font>
+</p>
+<p style="margin-bottom: 0in; background: #eeeeee"><font face="serif"><font size="3" style="font-size: 12pt">7.Write
+the SRS for the restaurant example whose analysis is shown in the
+chapter. </font></font>
+</p>
+<p style="margin-bottom: 0in; background: #eeeeee"><font face="serif"><font size="3" style="font-size: 12pt">8.
+Write the functional requirements for the restaurant example using
+use cases. </font></font>
+</p>
+<p style="margin-bottom: 0in; background: #eeeeee"><font face="serif"><font size="3" style="font-size: 12pt">9.
+Develop a worksheet for calculating the function point for a given
+problem specification. </font></font>
+</p>
+<p style="margin-bottom: 0in; background: #eeeeee"><font face="serif"><font size="3" style="font-size: 12pt">10.Compute
+the function points for the restaurant example (can use the
+worksheet). </font></font>
+</p>
+<p style="margin-bottom: 0in; background: #eeeeee"><br/>
+
+</p>
+</body>
+</html>
