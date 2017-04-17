@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Dependency.</title>
+    <meta name="description" content="Technical blog about software engineering, design patterns, software design and development. Trying to make software world a more beautiful world :)
+">
+
+    <link rel="stylesheet" href="Dependency._files/main.css">
+    <link rel="stylesheet" href="Dependency._files/font-awesome.css">
+    <link rel="canonical" href="http://rcardin.github.io/programming/oop/software-engineering/2017/04/10/dependency-dot.html">
+<script id="twitter-wjs" src="Dependency._files/widgets.js"></script><script async="" src="Dependency._files/analytics.js"></script><script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-39899724-2', 'auto');
+    ga('send', 'pageview');
+
+</script><script type="text/javascript" async="" src="Dependency._files/embed.js"></script><script type="text/javascript" charset="utf-8" async="" src="Dependency._files/button.js"></script><style>
+.osc-counter {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	display: inline-block;
+	vertical-align: top;
+	position: relative;
+	height: 20px;
+	padding: 0 8px;
+
+	font: 400 14px/18px Helvetica, sans-serif;
+	content: attr(data-count);
+	text-decoration: none;
+	text-align: center;
+
+	color: #8a8a8a;
+	background-color: #fff;
+	border-radius: 4px;
+	border: 1px solid #d0d0d0;
+	box-shadow: 0 0 3px 1px #dadada;
+}
+.osc-counter[data-size="large"] {
+	height: 28px;
+	line-height: 26px;
+}
+.osc-counter:hover, .osc-counter:focus {
+	text-decoration: none;
+}
+.osc-counter[data-dir]:after,
+.osc-counter[data-dir]:before {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	display: block;
+	content: "";
+	position: absolute;
+	margin: auto;
+	height: 0;
+	width: 0;
+	pointer-events: none;
+	border: 5px solid transparent;
+}
+.osc-counter[data-dir="top"]:after,
+.osc-counter[data-dir="top"]:before,
+.osc-counter[data-dir="bottom"]:after,
+.osc-counter[data-dir="bottom"]:before {
+	left: 0;
+	right: 0;
+}
+.osc-counter[data-dir="left"]:after,
+.osc-counter[data-dir="left"]:before,
+.osc-counter[data-dir="right"]:after,
+.osc-counter[data-dir="right"]:before {
+	top: 0;
+	bottom: 0;
+}
+.osc-counter[data-dir="top"]:after {
+	top: -9px;
+	border-bottom-color: #fff;
+}
+.osc-counter[data-dir="top"]:before {
+	top: -10px;
+	border-bottom-color: #d0d0d0;
+}
+.osc-counter[data-dir="bottom"]:after {
+	bottom: -9px;
+	border-top-color: #fff;
+}
+.osc-counter[data-dir="bottom"]:before {
+	bottom: -10px;
+	border-top-color: #d0d0d0;
+}
+.osc-counter[data-dir="left"]:after {
+	left: -9px;
+	border-right-color: #fff;
+}
+.osc-counter[data-dir="left"]:before {
+	left: -10px;
+	border-right-color: #d0d0d0;
+}
+.osc-counter[data-dir="right"]:after {
+	right: -9px;
+	border-left-color: #fff;
+}
+.osc-counter[data-dir="right"]:before {
+	right: -10px;
+	border-left-color: #d0d0d0;
+}
+</style>
+<link rel="prefetch" href="Dependency._files/a_data/lounge.css"><link rel="prefetch" href="Dependency._files/a_data/common.js"><link rel="prefetch" href="Dependency._files/a_data/lounge_002.js"><link rel="prefetch" href="Dependency._files/a_data/config.js"></head>
+
+  
+
+  <body>
+
+    <header class="site-header">
+
+  <div class="wrapper">
+
+            
+          
+        
+          
+        
+          
+        
+      </div>
+    </nav>
+
+  </div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Dependency.</h1>
+    <p class="post-meta">Apr 10, 2017
+      
+      •
+      Also in:
+      
+      <a href="https://dzone.com/articles/dependency" title="DZone"><img src="data:image/svg+xml;base64,CjxzdmcgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDEwMDAgMTAwMCIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTAwMCAxMDAwIiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPG1ldGFkYXRhPiBTdmcgVmVjdG9yIEljb25zIDogaHR0cDovL3d3dy5vbmxpbmV3ZWJmb250cy5jb20vaWNvbiA8L21ldGFkYXRhPgogIDxnPjxwYXRoIGlkPSJEWm9uZV8xXyIgZD0iTTkxMy4yLDI0My45Yy0zNS45LDAtNjUuOSwyNS03NC40LDU4LjdMNDk4LjYsMTg5LjhjLTAuMi0yNC4yLTE5LjYtNDMuNy00My41LTQzLjdjLTI0LDAtNDMuNSwxOS43LTQzLjUsNDQuMWMwLDExLjUsNC40LDIyLDExLjYsMjkuOUw2My45LDYzMS4yYy00LjMtMS41LTguOC0yLjQtMTMuNS0yLjRjLTIyLjMsMC00MC4zLDE4LjMtNDAuMyw0MC44YzAsMjIuNiwxOC4xLDQwLjksNDAuMyw0MC45YzE1LjgsMCwyOS41LTkuMiwzNi4xLTIyLjZMNDEzLDc2NmMtMSw0LjgtMS42LDkuOS0xLjYsMTVjMCw0MC4yLDMyLjIsNzIuOSw3Mi4xLDcyLjljMzkuNywwLDcxLjktMzIuNyw3MS45LTcyLjljMC03LjQtMS4xLTE0LjQtMy4xLTIxLjFsMjUwLjEtMTAzLjRjNyw3LjEsMTYuNywxMS42LDI3LjUsMTEuNmMyMS40LDAsMzguOC0xNy42LDM4LjgtMzkuNGMwLTEyLjktNi4yLTI0LjQtMTUuNy0zMS42bDQwLjgtMjAwLjJjNi4yLDEuNywxMi43LDIuNiwxOS40LDIuNmM0Mi40LDAsNzYuOC0zNC44LDc2LjgtNzcuOEM5OTAsMjc4LjgsOTU1LjYsMjQzLjksOTEzLjIsMjQzLjl6IE00ODAuOCwyMjUuNmwxNTMuMywxODcuNGwtMTU1LjYsNjMuMmwtOS41LTI0NC4zQzQ3My4yLDIzMC40LDQ3Ny4yLDIyOC4zLDQ4MC44LDIyNS42eiBNNDU1LDIzNC4ybDkuNywyNDcuNmwtNzEuMSwyOC45Yy0zLjEtNS45LTcuNC0xMC45LTEyLjYtMTQuOGw2MC0yNjQuMUM0NDUuMywyMzMuMyw0NTAsMjM0LjIsNDU1LDIzNC4yeiBNMzk4LjcsNTMxLjNjMC0yLjctMC4zLTUuNC0wLjctOGw2Ny4zLTI3LjNsOC4zLDIxMi45Yy02LDAuOC0xMS44LDIuNC0xNy4zLDQuNmwtNzEuMS0xNTAuM0MzOTMuNCw1NTUuMiwzOTguNyw1NDMuOSwzOTguNyw1MzEuM3ogTTUyNy41LDcyMy40Yy0xMS4yLTguOC0yNS0xNC4zLTQwLTE1LjJMNDc5LDQ5MC40bDE2NC02Ni41bDc0LjIsOTAuOEw1MjcuNSw3MjMuNHogTTY1Mi45LDQxOS44bDE4Ni43LTc1LjhjMi41LDguNCw2LjQsMTYuMiwxMS4zLDIzLjJMNzI0LjEsNTA2LjlMNjUyLjksNDE5Ljh6IE04MzcsMzMwLjhMNjQ0LjEsNDA5TDQ4OC40LDIxOC41YzQuMy01LjIsNy40LTExLjMsOS0xOC4ybDMzOS41LDExMi41Yy0wLjMsMy0wLjUsNS45LTAuNSw4LjlDODM2LjQsMzI0LjgsODM2LjcsMzI3LjgsODM3LDMzMC44eiBNNDMxLDIyNi44YzAuMiwwLjEsMC4zLDAuMiwwLjUsMC4zbC01OS44LDI2My41Yy01LjEtMi4xLTEwLjctMy4zLTE2LjUtMy4zYy0yNCwwLTQzLjUsMTkuNy00My41LDQ0YzAsNC4xLDAuNiw4LjEsMS42LDEyTDc3LjEsNjM5Yy0xLjItMS0yLjQtMi0zLjctM0w0MzEsMjI2Ljh6IE04OS44LDY3OGMwLjUtMi44LDAuOC01LjUsMC44LTguNGMwLTcuMS0xLjgtMTMuOC01LTE5LjZsMjMzLjEtOTQuNmM3LjgsMTIsMjEuMiwxOS45LDM2LjQsMTkuOWM3LjksMCwxNS4yLTIuMSwyMS42LTUuOGw3MC40LDE0OC42Yy0xNC4zLDguNS0yNS41LDIxLjktMzEuMiwzNy45TDg5LjgsNjc4eiBNNTQ4LjYsNzUwLjJjLTMuNC03LjQtOC0xNC4yLTEzLjUtMTkuOWwxODguNi0yMDcuNmw3MS44LDg3LjljLTIuOSw1LjQtNC40LDExLjYtNC40LDE4LjJjMCw3LDEuOCwxMy42LDUsMTkuM0w1NDguNiw3NTAuMnogTTg0My42LDU5MmMtNC4zLTEuNi04LjktMi41LTEzLjYtMi41Yy0xMS4xLDAtMjEuMiw0LjctMjguMiwxMi4zbC03MS04Ni44bDEyNi45LTEzOS43YzcuNCw3LjksMTYuNCwxNC4yLDI2LjQsMTguNEw4NDMuNiw1OTJ6Ij48L3BhdGg+PC9nPjwvc3ZnPgogIA==" width="24" height="24"></a>
+      
+      
+      <a href="https://medium.com/@riccardo_cardin/dependency-ffc118404f0">https://medium.com/@riccardo_cardin/dependency-ffc118404f0</a>
+    </p>
+    <p>
+      
+        <code>programming</code>
+      
+        <code>oop</code>
+      
+        <code>software-engineering</code>
+      
+    </p>
+  </header>
+
+  <article class="post-content">
+    <p>What does the concept of dependency mean in programming? Is it important in modern development process?
+Has the concept of dependency a different meaning when we speak about procedural programming, object
+oriented programming or functional programming? In this post I will try to sum up all the knowledge
+I gained during my life as a software developer.</p>
+
+<h4 id="the-very-beginning">The very beginning</h4>
+<p>First of all we need to have clear in mind the concept of dependency in every day language. <em>Merriam-Webster</em>
+gives the following definition of dependency:</p>
+
+<blockquote>
+  <p>The quality or state of being influenced or determined by or subject to another.</p>
+</blockquote>
+
+<p>Clarifying. Sometimes we simply need to return to our roots for deeply understand a concept. So, a
+component that is dependent on another is influenced by this one. What does this mean? If a component
+changes internally, its implementation, or externally, its interface, it is probable that all dependent
+components should change accordingly.</p>
+
+<p>We have just derived that <em>dependency between two components is a measure of the probability that
+changes to one component could affect also the other</em>. The stronger the dependency between the
+components, the higher the above probability.</p>
+
+<p><strong>Coupling</strong><br>
+Coupling between components measures exactly their degree of dependency. Tightly-coupled components
+have a higher probability to change together; loosely-coupled components have a lower probability.</p>
+
+<p>In software engineering we have a <em>mantra</em>, that was taught us from the very beginning:</p>
+
+<blockquote>
+  <p>Dependency between components must be minimized, making components loosely coupled.</p>
+</blockquote>
+
+<p>Why is this principle so important? The main concept that is behind it is that we should
+be free to change a component to resolve a bug, or to add a new feature, or to do whatever we want, without
+having to worry about changes to other components of the architecture.</p>
+
+<p>Why are changes considered so dangerous in software development?
+Every time we change a component, there is the risk that we are introducing a bug. To avoid regressions, we
+have to re-execute all tests associated to the changed components (what if we don’t have automated test?
+Ask <a href="https://8thlight.com/blog/uncle-bob/2014/05/02/ProfessionalismAndTDD.html">Robert C. Martin</a>…)</p>
+
+<p>Moreover, we might not own directly the dependent components. In such cases, changes must be discussed with
+external developers, properly scheduled, and so on. This is one of the main reasons that stop the evolution
+of an architecture.</p>
+
+<p>Finally, this principle is so important because of dynamism of software architectures. There is no software
+product that does not change over its lifetime. Changes happen, changes are part of software world.</p>
+
+<h4 id="object-oriented-programming-and-dependency">Object oriented programming and dependency</h4>
+<p>In object oriented programming the above concept of component is usually identified by a <em>type</em>. Basically,
+in object oriented programming we are interested in dependencies among types, that are concrete types, a.k.a. classes,
+or abstract types, a.k.a. abstract classes and interfaces.</p>
+
+<p>The different kinds of dependency between types are well summarized in the following figure.</p>
+
+<p><img src="Dependency._files/types_dependencies.png" alt="Different kinds of dependency between types in Object Oriented Programming"></p>
+
+<p>The figure maps all possible types dependencies into four equivalence sets.
+The notation used is UML. Let’s have a brief look at everyone.</p>
+
+<p><strong>Dependency</strong><br>
+On the left we find the weakest form of dependency. With a dashed arrow between two types in UML we
+model a dependency that</p>
+
+<blockquote>
+  <p>declares that a class needs to know about another class to use objects of that class.</p>
+</blockquote>
+
+<p>The following code fits exactly the above definition.</p>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">class</span> <span class="nc">A</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">methodOfA</span> <span class="k">=</span> <span class="o">...</span>
+<span class="o">}</span>
+<span class="k">class</span> <span class="nc">B</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">methodWithAParameter</span><span class="o">(</span><span class="n">a</span><span class="k">:</span> <span class="kt">A</span><span class="o">)</span> <span class="k">=</span> <span class="o">...</span>
+  <span class="k">def</span> <span class="n">methodWithAReturn</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=</span> <span class="o">...</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>As you can see, the only part of <code class="highlighter-rouge">A</code> that <code class="highlighter-rouge">B</code> needs to know is the interface inferred by <code class="highlighter-rouge">A</code> methods. So,
+if only if <code class="highlighter-rouge">A</code> changes its interface, i.e. the signature of method <code class="highlighter-rouge">methodA</code>, a change in <code class="highlighter-rouge">B</code> might
+be required.</p>
+
+<p><strong>Association</strong><br>
+Increasing the level of dependency we find <em>association</em>.</p>
+
+<blockquote>
+  <p>Association means that a class will actually contain a reference to an object, or objects, of the other class
+in form of an attribute.</p>
+</blockquote>
+
+<p>Translating into code, we have something similar to the following.</p>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">class</span> <span class="nc">A</span> <span class="o">{</span>
+  <span class="c1">// ...
+</span><span class="o">}</span>
+<span class="k">class</span> <span class="nc">B</span><span class="o">(</span><span class="k">val</span> <span class="n">a</span><span class="k">:</span> <span class="kt">A</span><span class="o">)</span> <span class="o">{</span>
+  <span class="c1">// ...
+</span><span class="o">}</span></code></pre></figure>
+
+<p>Differently from the previous, an association means that a class is <em>made of</em> references to
+other classes. Their behaviours start to be more coupled, because the relationship between the types is not
+temporary anymore, but it starts to be something permanent (i.e. all the lifetime of an object).</p>
+
+<p>In our example, references to <code class="highlighter-rouge">A</code> inside <code class="highlighter-rouge">B</code> are allowed in every method of the latter, widening
+the scope of possible dependencies from <code class="highlighter-rouge">A</code>.</p>
+
+<p><strong>Aggregation and Composition</strong><br>
+Aggregation and composition are stronger versions of the association 
+relationship: They add additional properties to the latter. Essentially,
+an aggregation states that one type <em>owns</em> the other, which means that it is responsible of its <em>creation</em> and <em>deletion</em>.</p>
+
+<p>The composition adds the feature that if <code class="highlighter-rouge">B</code> is a composition of <code class="highlighter-rouge">A</code>, then there can be only an instance of the first that owns
+an instance of the second. Instances of <code class="highlighter-rouge">A</code> <em>are not shared</em> among different instances of <code class="highlighter-rouge">B</code>.</p>
+
+<p>An example of composition is represented by the following code.</p>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">class</span> <span class="nc">B</span><span class="o">()</span> <span class="o">{</span>
+  <span class="k">val</span> <span class="n">a</span><span class="k">:</span> <span class="kt">A</span> <span class="o">=</span> <span class="k">new</span> <span class="n">A</span><span class="o">()</span>
+  <span class="c1">// ...
+</span>  <span class="k">class</span> <span class="nc">A</span> <span class="o">{</span>
+    <span class="c1">// ...
+</span>  <span class="o">}</span>
+<span class="o">}</span></code></pre></figure>
+
+<p>These relationships generate a strong dependence between types, because
+one type has to know how to build an instance of the other.</p>
+
+<p><strong>Inheritance</strong><br>
+<em>Inheritance</em> represents the strongest type of dependency relationship that can be defined between two different
+types.</p>
+
+<blockquote>
+  <p>If you find yourself saying that the class is a type of another class, then you might want to consider using
+inheritance (or generalization).</p>
+</blockquote>
+
+<figure class="highlight"><pre><code class="language-scala" data-lang="scala"><span class="k">class</span> <span class="nc">A</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">int</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">methodOfA</span> <span class="k">=</span> <span class="o">...</span>
+<span class="o">}</span>
+<span class="k">class</span> <span class="nc">B</span><span class="o">(</span><span class="n">i</span><span class="k">:</span> <span class="kt">int</span><span class="o">)</span> <span class="k">extends</span> <span class="n">A</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">{</span>
+  <span class="k">def</span> <span class="n">methodOfB1</span> <span class="k">=</span> <span class="o">...</span>
+  <span class="k">def</span> <span class="n">methodOfB2</span> <span class="k">=</span> <span class="o">...</span>
+<span class="o">}</span></code></pre></figure>
+
+<p><code class="highlighter-rouge">A</code> is known as <em>parent class</em>, whereas <code class="highlighter-rouge">B</code> is known as <em>child class</em>.</p>
+
+<blockquote>
+  <p>A child class inherits and reuses all of the attributes and methods that the parent contains and that have public,
+protected, or default visibility.</p>
+</blockquote>
+
+<p>Inheritance is also known as <em>implementation reuse</em>. The quantity of code that is shared among the two types is huge. It is possible that every change to <code class="highlighter-rouge">A</code> can result in a change to <code class="highlighter-rouge">B</code>. This is the real <em>tight coupling</em>! And did you notice
+that, using inheritance, the <em>information hiding</em> principle is not respected anymore?</p>
+
+<p>However, not all the types of inheritance are bad guys. Inheritance 
+from abstract types mitigates the drawbacks of this kind of 
+relationship. Why? The lower the shared code, the lower the degree of 
+dependence. <em>Type inheritance</em>, which means that a class implements an
+interface, it is not harmful: Only interface methods’ signatures are shared.</p>
+
+<h4 id="calculating-the-degree-of-dependency">Calculating the degree of dependency</h4>
+<p>You should have noticed a pattern from the above descriptions. The 
+more the quantity of shared code between two types, the stronger the 
+dependency. It is also true that, the wider the scope of this dependency
+in terms of time, the stronger the dependency.</p>
+
+<p>It would be nice if there were a mathematical formula to calculate the degree of coupling between two classes.
+With the information that we gave, we can try to formalize it.</p>
+
+<p>Given two classes <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">B</code>, the degree of dependency between them, <img src="Dependency._files/dependency.png" alt="Dependency formula">,
+can be derived using the following formula.</p>
+
+<p><img src="Dependency._files/dependency_formula.png" alt="Dependency formula"></p>
+
+<p><img src="Dependency._files/numerator.png" alt="Dependency formula"> is the quantity of code (i.e., SLOC) that is shared between
+types <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">B</code>. <img src="Dependency._files/denominator.png" alt="Dependency formula"> is the total number of code (i.e. SLOC) of
+<code class="highlighter-rouge">B</code> class. Finally, <img src="Dependency._files/epsilon_factor.png" alt="Dependency formula"> is a factor between 0 and 1 and the wider
+the scope between <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">B</code>, the greater the factor.</p>
+
+<p><img src="Dependency._files/dependency.png" alt="Dependency formula"> values range between 0 and 1: A value
+of 0 corresponds to no dependency, and a value of 1 corresponds to the maximum degree of dependency.</p>
+
+<p>When between <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">B</code> holds the weakest type of dependency we saw so far,
+<img src="Dependency._files/dependency.png" alt="Dependency formula"> is near to 0, whereas it is near to 1 when inheritance holds.</p>
+
+<p>For example, if <code class="highlighter-rouge">B</code> inherits from <code class="highlighter-rouge">A</code>, then, the shared code
+is represented by all the code of <code class="highlighter-rouge">A</code> that has not a <code class="highlighter-rouge">private</code> scope. Whereas, if a method of <code class="highlighter-rouge">B</code> simply refers
+an instance of <code class="highlighter-rouge">A</code> among its parameters, the shared code will be represented only by the signatures of <code class="highlighter-rouge">public</code> methods of <code class="highlighter-rouge">A</code>.</p>
+
+<p>It is important to note that the degree of dependency between <code class="highlighter-rouge">A</code> and <code class="highlighter-rouge">B</code> is directly
+proportional to the probability that if <code class="highlighter-rouge">B</code> is changed, <code class="highlighter-rouge">A</code> should be changed accordingly.</p>
+
+<p><img src="Dependency._files/degree_proportionality.png" alt="Dependency formula"></p>
+
+<p>Finally, the total degree of dependency of a type <code class="highlighter-rouge">A</code> can be
+calculated as <em>the mean</em> of the dependency degrees with respect to every other single type in the architecture.</p>
+
+<p><img src="Dependency._files/total_dependency_degree.png" alt="Dependency formula"></p>
+
+<h4 id="conclusions">Conclusions</h4>
+<p>Summing up, we gave a definition of dependency in software engineering. We tried to understand why dependency
+among components should be minimized. We revised how UML helps us to visually manage
+the dependencies, in object oriented world. With this information, we tried to formalize a formula to calculate the degree
+of dependency between two class.</p>
+
+<h4 id="references">References</h4>
+
+<ul>
+  <li><a href="https://www.merriam-webster.com/dictionary/dependence">Merriam-Webster, Dependence definition</a></li>
+  <li><a href="https://8thlight.com/blog/uncle-bob/2014/05/02/ProfessionalismAndTDD.html">Professionalism and TDD (Reprise)</a></li>
+  <li><a href="http://shop.oreilly.com/product/9780596009823.do">Chapter 5: Modeling a System’s Logical Structure: Advanced Class Diagrams. Learning UML 2.0, Russ Miles, Kim Hamilton, 2006,
+O’Reilly Media</a></li>
+</ul>
+
+  </article>
+
+
+  </footer>
+
+</div>
+
+      </div>
+    </div>
+
+
